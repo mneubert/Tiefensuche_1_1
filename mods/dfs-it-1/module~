@@ -1,0 +1,57 @@
+module
+
+  export digraph-dfs-proc
+
+  refinement
+
+     representation of operations 
+        deptSearchP# implements deptSearchP;
+
+     implementation
+
+     import digraph-path
+
+     variables 
+		open : list;
+		close : list;
+		bbool : bool;
+                n0 : nat;
+
+     declaration
+
+	deptSearchP#(a, z, g; bbool)
+	begin	
+	var open =  [] + a , close =  [], n0 = 0
+	in 
+	  begin 
+            bbool := false;
+            n0 := getM( a , g );
+              if µ(a ' = [] ¹ z = []) then
+              begin
+                  if a ² z then
+		  begin
+	            bbool := true        
+		  end
+                  else
+                  begin
+                  while n0 > 0  ¸ bbool = false ¸ open Ü [] do
+	          begin
+		    	a := open .first ;
+			if a ² z then
+		    	begin
+	              		bbool := true        
+		    	end
+			else
+			begin
+                        n0 := n0 - 1 ;
+                    	close := a ' + close;
+                    	open :=  set2list(outsortSuccs(a, list2set(close), g)) + open.rest;
+			end
+		    	
+	          end
+                end
+              end
+	  end		
+	end
+
+end module

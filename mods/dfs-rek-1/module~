@@ -1,0 +1,86 @@
+module
+
+  export digraph-dfs-proc
+
+  refinement
+
+    representation of operations  
+
+      deptSearchP# implements deptSearchP;
+
+    implementation
+
+    import 
+
+       union_bool_graph
+
+    procedures
+
+       deptSearchProc# list , list , list , digraph, nat : bool ;
+       findAllVertices# elem, digraph : nat;       	
+
+    variables 
+		open : list;
+		close : list;
+		bbool : bool;
+		n : nat;
+		m : nat;
+		s20 : set;
+		b99 : elem;
+     
+    declaration
+
+       findAllVertices#(a, g; var m)
+	begin
+		var s20 = à, b99 = a in
+		begin
+			m := 0 ;
+			s20 := g .vs ;
+				while(s20 Ü à) do
+				begin
+					b99 := s20 .max ;
+					s20 := s20 .butmax ;
+					if(path´(a,b99,g) ¸ a Ü b99) then
+					begin
+						m := m + 1
+					end
+				end
+		end
+	end ;
+
+       deptSearchP#(a, z, g; var bbool)
+          begin
+            var n = 0 in
+	begin
+	    findAllVertices#(a, g; n) ;	
+            bbool := false ;		    
+            if µ(a ' = [] ¹ z = []) then
+                begin
+                  deptSearchProc#(a ', [], z, g, n; bbool) 
+                end
+end;
+          end ;
+
+       deptSearchProc#(open, close, z, g, n; var bbool) 
+         begin	   	
+           var a = open.first in
+           begin
+             if a ² z then 
+               begin
+                 bbool := true
+               end
+             else 
+               begin
+                 bbool := false ;
+		 close := a ' + close ;
+                 open :=  set2list(outsortSuccs(a, list2set(close), g)) + open.rest ;
+                 if n - # close > 0 ¸ open Ü [] then 
+                   begin 
+                     deptSearchProc#(open, close, z, g, n; bbool) ;
+                   end
+
+               end
+            end
+          end  ;
+
+end module

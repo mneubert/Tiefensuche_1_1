@@ -1,0 +1,45 @@
+module
+
+  export digraph-path
+
+  refinement
+
+     representation of operations  
+
+      getM# implements getM;
+
+     implementation
+
+     import union_bool_graph
+
+     (: auxiliary signature for the implementation :)
+
+     (: procedures :)
+
+      variables 
+		s20 : set;
+		b99 : elem;
+
+      declaration 
+
+ 	getM#(a, g;  n)
+	begin
+		var s20 = à, b99 = a in
+		begin
+			n := 0 ;
+			s20 := g .vs ;
+				while(s20 Ü à) do
+				begin
+					b99 := s20 .max ;
+					s20 := s20 .butmax ;
+					if(path´(a,b99,g) ¸ a Ü b99) then
+					begin
+						n := n + 1
+					end
+				end
+		end
+	end ;
+
+
+
+end module

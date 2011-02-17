@@ -1,0 +1,45 @@
+module
+
+  export pathEx
+
+  refinement
+    
+    representation of operations  
+
+      findAllVertices# implements findAllVertices;
+
+     implementation
+
+     import digraph-outsorted-neighbours
+
+     variables
+		n : nat;
+		m : nat;
+		s20 : set;
+		b99 : elem;
+
+     declaration
+
+	findAllVertices# (a, g ; var m)
+	begin
+		var s20 = à, b99 = a in
+		begin
+			m := 0 ;
+			s20 := g .vs ;
+				while(s20 Ü à) do
+				begin
+					b99 := s20 .max ;
+					s20 := s20 .butmax ;
+					if(path´(a,b99,g) ¸ a Ü b99) then
+					begin
+						m := m + 1
+					end
+				end
+		end
+
+	end
+
+
+
+
+end module

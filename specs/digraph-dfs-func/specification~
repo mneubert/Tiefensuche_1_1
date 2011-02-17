@@ -1,0 +1,35 @@
+enrich union_bool_graph with
+
+;; sorts ;
+
+;; constants ;
+
+functions 
+	deptSearchF : elem Ô list Ô digraph ­ list;
+
+;; predicates ;
+
+;; variables ;
+
+;; induction ;
+
+axioms
+
+	(: alles leer :)
+	deptSearchF([] .first,[],@g) = [];
+	(: keine Zeilknoten :)
+	deptSearchF(a,[],g) = [];
+	(: kein Startknoten :)
+	deptSearchF([].first,z,g) = [];
+	(: leerer Graph :)
+	deptSearchF(a,z,@g) = [];
+	(: Startknoten gleichzeitig auch Zielknoten :)
+	a ² z ­ deptSearchF(a,z,g) = a;
+	(: Pfad zw. a und b, a verschieden von b :)
+	(b ² z ¸ path´(a,b,g) ¸ µ (a ² z)) ­ # (deptSearchF(a,z,g)) > 0;
+	(: falls nur ein Zielknoten, muss der Pfad ueber diesen fuehren :)
+	z.rest = [] ¸ path´(a,z.first,g) ­ deptSearchF(a,z,g).last = z.first;
+	(: falls a nicht in Zielknotenmenge, dann muss es ein b geben ueber welches der Pfad verlaeuft :)
+	µ(a ² z) ¸ ´ c . (c ² z ¸ path´(a,c,g)) ­ ´ b . (deptSearchF(a,z,g)) = (deptSearchF(a,b ',g) + deptSearchF(b,z,g));
+
+end enrich

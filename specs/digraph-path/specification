@@ -1,0 +1,20 @@
+enrich union_bool_graph with
+
+;; sorts ;
+
+;; constants ;
+
+functions
+	getM : elem Ô digraph ­ nat;
+;; predicates ;
+
+;; variables ;
+
+;; induction ;
+
+axioms
+
+getM(a, @g) = 0 ;
+µ b ²_v g ¸ a ²_v g  ­ getM(a, g +e (a --> b)) = getM(a, g) + 1;
+
+end enrich

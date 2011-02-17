@@ -1,0 +1,18 @@
+enrich union_bool_graph with
+
+predicates
+	deptSearchP : elem Ô set Ô digraph;
+
+;; variables ;
+
+;; induction ;
+
+axioms
+        s = à  ­ deptSearchP(a, s, g) = false;
+	a ² s ¸ a ²_v g ­ deptSearchP(a, s, g) = true; 
+        a ' = [] ­  deptSearchP(a, s, g) = false;
+	deptSearchP(a, s, g) = true ° ´ b. path´(a, b, g) ¸ b ² s;
+	path´(a, b, g) ¸ c ² s ¸ path´(b, c, g) ­ deptSearchP(a, s, g) = true;; sorts ;
+
+
+end enrich

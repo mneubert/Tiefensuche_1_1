@@ -1,0 +1,201 @@
+;;; this is a comment
+
+;; heuristics:
+
+;; ### heuristic sets ###
+;;   PL Heuristics + Struct. Ind.
+;;   PL Heuristics + Case Splitting
+;;   PL Heuristics
+;;   Cntex Heuristics
+;;   SC Heuristics
+;;   DL Heuristics + Induction
+;;   DL Heuristics + Case Splitting
+;;   DL Heuristics
+;;   DL Heuristics + Induction
+;;   DL Heuristics + Case Splitting
+;;   DL Heuristics
+;;   TL Heuristics
+;;   TL Heuristics + Exec
+;; ### single heuristics
+;;   module specific
+;;   symbolic execution
+;;   execute loop
+;;   exec loop
+;;   structural induction
+;;   Replay
+;;   induction
+;;   simplifier
+;;   weak simplifier
+;;   strong simplifier
+;;   elimination
+;;   var elimination
+;;   contract and execute
+;;   unfold
+;;   strong unfold
+;;   weak unfold
+;;   calls concrete
+;;   calls nonrecursive
+;;   calls flat
+;;   bounded calls
+;;   split
+;;   conditional
+;;   conditional right split
+;;   conditional left split
+;;   make lemma + continue
+;;   batch mode
+;;   cntex batch mode
+;;   omega
+;;   loop exit
+;;   unwind
+;;   if-then-else split
+;;   pl case distinction
+;;   dl case distinction
+;;   cut
+;;   constructor cut
+;;   strong weakening
+;;   rewrite
+;;   give value
+;;   weak cut
+;;   axiom cut
+;;   Quantifier closing
+;;   Quantifier
+;;   lemma closing
+;;   apply ind once
+;;   apply VD induction
+;;   proof lemma
+;;   apply ind
+;;   apply ind closing
+;;   ### heuristics for basic rotate rules (usebasicrotaterules? options) = T ###
+;;   close axiom
+;;   prop nonsplit rotate
+;;   prop split rotate
+;;   quant discard
+;;   quant split
+;;   quant inst
+;;   ### heuristics for basicrules (usebasicrules? options) = T ###
+;;   axiom
+;;   prop simplification
+;;   insert equation
+;;   prop split
+;;   smart basic case distinction
+;;   discard quantifier
+;;   ### misc special heuristics for testing, internal use etc. ###
+;;   subproof
+;;   proofscript
+;;   wrong goal
+;;   ### heuristics for 3tap (3tap-available) = T ###
+;;   standard tap
+;;   deep tap
+;;   broad tap
+;;   simple tap
+;;   Spass
+;;   ###  heuristics for TL ###
+;;   tl simplify
+;;   tl execute
+;;   tl call
+;;   tl apply induction
+;;   tl trace induction
+;;   tl step
+;;   tl exist case
+;;   tl case distinction
+;;   isc initiate
+;;   isc extract states
+;;   isc execute call
+;;   isc step
+;;   sc drop
+;;   sc initiate
+;;   sc wf
+;;   sc step
+;;   sc tlstep
+;;   uml sc step
+;;   ### Java heuristics ###   
+;;   simple java stuff
+;;   after simplify java stuff
+;;   always doit java stuff
+
+;; options:
+
+;;   Use basic rules
+;;   Use only proved local simps
+;;   Allow only proved lemmas
+;;   Accept unknown features
+;;   Keep old versions
+;;   Don't warn about subsignature
+;;   Collapse closed branches
+;;   Context: Ask if only one rule
+;;   Context: Show all rules
+;;   Context: Add abbrev command
+;;   Context: Add insert Java lemma
+;;   Context: Don't show info command
+;;   Context: Don't abbreviate long rewrite rules
+;;   Context: Don't show TL rules
+;;   CounterEx: Don't Show infos
+;;   Show Ind-Hyp
+;;   Pretty print Java
+;;   Pretty print html
+;;   Dumb structural induction
+;;   Show logic trees
+;;   Show logic test trees
+;;   Construct infos for pred reuse
+;;   Produce postscript from LaTeX
+;;   Use basic rotation rules
+;;   Use hoare assign rule
+;;   Don't sort theorems in base
+;;   No automatic predtest
+;;   No positive/negative tests
+;;   Symbolic execution (no rec. ite-unfold)
+;;   Simplifier: No forward
+;;   Simplifier: No recursive calls
+;;   Keep simplifier trees
+;;   Split left first
+;;   Don't recycle tree window
+;;   Update on each step
+;;   Don't update on interaction
+;;   Don't show trees
+;;   Don't update status on each step
+;;   Careful replay
+;;   Don't save replays
+;;   Replay: Don't collect messages
+;;   Configure replay
+;;   Replay with extra heuristics
+;;   Abort if replay failed
+;;   Don't adjust substs
+;;   Replay proofs with old simprules
+;;   Replay steps with old simprules
+;;   Enter proved state after replay all
+;;   ### options for 3tap ###
+;;   No axiom reduction
+;;   timeout 2 sec
+;;   timeout 5 sec
+;;   timeout 30 sec
+;;   timeout 1 min
+;;   timeout 2 min
+;;   timeout 5 min
+;;   no grepall
+;;   no equality
+;;   strategy G
+;;   strategy D
+;;   maxcounter 1
+;;   maxcounter 2
+;;   maxcounter 3
+;;   Add ellipsify command ;; not in unit config
+
+;; simplifier:
+
+;;       simp add <feature>
+;;       simp delete <feature>
+;;       forward add <feature>
+;;       forward delete <feature>
+
+configs:
+
+;;    load libraries
+;;    new spec names
+;;    no exit all
+;;    no work on library
+;;    no proof locks for library
+;;    hide library
+;;    no directory locks
+;;    ignore all errors
+;;    update code
+

@@ -1,0 +1,23 @@
+enrich digraph-basic, union_bool_graph with
+
+;; sorts ;
+
+;; constants ;
+
+;; functions
+
+predicates
+	deptSearchP : elem Ô list Ô digraph;
+
+;; variables ;
+
+;; induction ;
+
+axioms
+        (z = [] ¸ a ²_v g) ¹ a ' = [] ­ deptSearchP(a, z, g) = false;
+	a ² z ¸ a ²_v g ­ deptSearchP(a, z, g) = true; 
+        ;; a ' = [] ­  deptSearchP(a, z, g) = false;
+	´ b. path´(a, b, g) ¸ b ² z ¸ a ²_v g ¸ b ²_v g ­ deptSearchP(a, z, g) = true;
+	´ b, c.(path´(a, b, g) ¸ c ² z ¸ path´(b, c, g) ¸ a ²_v g ¸ b ²_v g ¸ c ²_v g)  ­ deptSearchP(a, z, g) = true; 
+
+end enrich

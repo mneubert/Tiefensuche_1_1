@@ -1,0 +1,42 @@
+module
+
+  export pathEx
+
+  refinement
+
+     (: clauses of the form 'importsort implements exportsort;' :)
+     (: representation of sorts :)
+
+     
+     (: clauses of the form 'proc implements exportop;':)
+     (: representation of operations :)
+
+
+     (: clauses of the form 'eproc : exportsort;' where eproc implements equality
+        i.e. eproc should have mode (importsort,importsort) : bool :)
+     (: equality :)
+
+     (: clauses of the form 'rproc : exportsort;' where rproc gives a restriction
+        which import data are used as representation of export
+        i.e. rproc should have mode (importsort) : bool :)
+     (: restriction :)
+
+     (: clauses of the form 'uproc : exportsort;' for every generated export sort
+        uproc should have mode (importsort) : bool :)
+     (: uniform restriction :)
+
+     implementation
+
+     import digraph-outsorted-neighbours
+
+     (: auxiliary signature for the implementation :)
+
+     (: procedures :)
+
+     (: variables :)
+
+     (: declaration :)
+
+
+
+end module

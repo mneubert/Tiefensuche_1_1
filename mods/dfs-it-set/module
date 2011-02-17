@@ -1,0 +1,46 @@
+module
+
+  export test-d
+
+  refinement
+
+     representation of operations 
+        deptSearchP# implements deptSearchP;
+
+     implementation
+
+     import union_bool_graph
+
+     variables 
+		open : set;
+		close : set;
+		allV : set;
+		bbool : bool;
+
+     declaration
+
+	deptSearchP#(a, s, g; bbool)
+	begin	
+	var open =  à  ++ a , close = à , allV = g .vs
+	in 
+	  begin 
+		bbool := false;
+		while ((not open =  à ) ¸ bbool = false) do
+		begin
+			a := open .min ;
+			allV := allV -- a;
+			if ( not (a ² s)) then
+			begin
+				close := close ++ a;
+				open := outsortSuccs(a, open ¶ close, g)  ¶  open .butmin ;
+			end
+			else
+			begin
+				close := close ++ a;
+				bbool := true
+			end
+		end
+	  end		
+	end
+
+end module

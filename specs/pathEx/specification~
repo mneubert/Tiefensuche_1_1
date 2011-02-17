@@ -1,0 +1,17 @@
+enrich digraph-outsorted-neighbours with
+
+;; sorts ;
+
+;; constants ;
+
+;; functions ;
+
+;; predicates ;
+
+;; variables ;
+
+;; induction ;
+
+;; axioms
+
+end enrich

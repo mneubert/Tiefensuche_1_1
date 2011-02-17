@@ -1,0 +1,12 @@
+;; This file is used to add additional formulas (e.g. invariants, cut formulas, etc.)
+;; Two semicolons start a line comment
+;; (: ... :) delimit a comment. They can be nested!
+
+(: x1 = open-Liste :)
+(: z0 = Zielknotenmenge :)
+
+´ b . b ² x1 ¸ ´ c . c ² z0 ¸ path´(b, c, g) ­ 
+
+
+;;; END <- reading stops here
+

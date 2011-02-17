@@ -1,0 +1,64 @@
+module
+
+  export 
+    
+      digraph-dfs-proc
+
+  refinement
+    representation of operations  
+
+      deptSearchP# implements deptSearchP;
+
+    implementation
+
+    import 
+
+       union_bool_graph
+
+    procedures
+
+       deptSearchProc# elem , list , list , digraph : bool ;
+
+    variables 
+		open : list;
+		close : list;
+		bbool : bool;
+     
+    declaration
+
+        deptSearchP#(a, z, g; var bbool)
+          begin
+            var open = [] + a ', close = [] in
+            begin
+              bbool := false ;
+
+              if µ(open = [] ¹ z = []) then
+                begin
+                  deptSearchProc#(open .first, close, z, g; bbool) 
+                end
+             end
+           end ;
+
+       deptSearchProc#(a, close, z, g; var bbool) 
+         begin
+           var open = [] in
+           begin
+             if a ² z then 
+               begin
+                 bbool := true
+               end
+             else 
+               begin
+                 bbool := false ;
+                 close := a ' + close ;
+                 open :=  set2list(outsortSuccs(a, list2set(close), g)) + open .rest ;
+               
+                 while open Ü [] ¸ (bbool = false) do 
+                   begin
+                     deptSearchProc#(open .first, (open + close), z, g; bbool) ;
+                   end
+               end
+            end
+          end  ;
+
+end module
