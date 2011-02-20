@@ -15,9 +15,9 @@ predicates
 
 axioms
         (z = [] ¸ a ²_v g) ¹ a ' = [] ­ deptSearchP(a, z, g) = false;
-	a ² z ¸ a ²_v g ­ deptSearchP(a, z, g) = true; 
-        ;; a ' = [] ­  deptSearchP(a, z, g) = false;
-	´ b. path´(a, b, g) ¸ b ² z ¸ a ²_v g ¸ b ²_v g ­ deptSearchP(a, z, g) = true;
-	´ b, c.(path´(a, b, g) ¸ c ² z ¸ path´(b, c, g) ¸ a ²_v g ¸ b ²_v g ¸ c ²_v g)  ­ deptSearchP(a, z, g) = true; 
+
+	;;path´(a, b, g) ¸ b ² z ¸ a ²_v g ¸ b ²_v g ­ deptSearchP(a, z, g) = true;
+
+        pathp(x, g) ¸ x .first = a ¸ x .last = b ­ deptSearchP(a, b ', g) = true;
 
 end enrich
