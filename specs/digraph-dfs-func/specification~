@@ -19,8 +19,10 @@ axioms
 
         pathp(x, g) ¸ x .first = a ¸ x .last = b ­ deptSearchF(a, b ', g) = x;
 
-	a --> b ²_e g ¸ b ² z ­ deptSearchF(a , z , g ) = x ¸ x .first = a ¸ x .last = b; 
+	a --> b ²_e g ¸ b ² z ­ deptSearchF(a , z , g ) .first  = a ; 
 
-	a --> b ²_e g ¸ b --> c ²_e g ¸ c ² z ­ deptSearchF(a , z , g ) =  x ¸ x .first = a ¸ x .last = b ¸ c ² x;
+	a --> b ²_e g ¸ b ² z ­ deptSearchF(a , z , g ) .last   = b ; 
+
+	a --> b ²_e g ¸ b --> c ²_e g ¸ c ² z ­ deptSearchF(a , z , g ) .first = a ;
 
 end enrich
