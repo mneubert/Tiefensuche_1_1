@@ -16,12 +16,13 @@ module
 		close : list;
 		bbool : bool;
                 n0 : nat;
+		a0 : elem;
 
      declaration
 
 	deptSearchP#(a, z, g; bbool)
 	begin	
-	var open =  [] + a , close =  [], n0 = 0
+	var open =  [] + a , close =  [], n0 = 0, a0 = a
 	in 
 	  begin 
             bbool := false;
@@ -36,19 +37,22 @@ module
                   begin
                   while n0 > 0  ¸ bbool = false ¸ open Ü [] do
 	          begin
-		    	a := open .first ;
-			if a ² z then
+		    	a0 := open .first ;
+			if a0 ² z then
 		    	begin
 	              		bbool := true        
 		    	end
 			else
 			begin
                         n0 := n0 - 1 ;
-                    	close := a ' + close;
-                    	open :=  set2list(outsortSuccs(a, list2set(close), g)) + open.rest;
+                    	close := a0 ' + close;
+                    	open :=  set2list(outsortSuccs(a0, list2set(close), g)) + open.rest;
 			end
-		    	
-	          end
+                  end;
+		  if n0 = 0 then
+			begin
+				bbool := false;
+			end
                 end
               end
 	  end		

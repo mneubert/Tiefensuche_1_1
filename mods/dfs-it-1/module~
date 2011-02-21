@@ -43,6 +43,7 @@ module
 		    	end
 			else
 			begin
+			bbool := false ;
                         n0 := n0 - 1 ;
                     	close := a ' + close;
                     	open :=  set2list(outsortSuccs(a, list2set(close), g)) + open.rest;

@@ -2,11 +2,9 @@
 ;; Two semicolons start a line comment
 ;; (: ... :) delimit a comment. They can be nested!
 
-(: x1 = open-Liste :)
-(: z0 = Zielknotenmenge :)
+(: xo ... x1 :)
 
-´ b . b ² x1 ¸ ´ c . c ² z0 ¸ path´(b, c, g) ­ 
-
+´ c. c ² x0 ¸  a --> c ²_e g ¸ c --> b ²_e g 
 
 ;;; END <- reading stops here
 

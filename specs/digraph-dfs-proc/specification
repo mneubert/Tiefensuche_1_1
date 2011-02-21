@@ -22,4 +22,6 @@ axioms
 
 	a --> b ²_e g ¸ b ² z ­ deptSearchP(a , z , g ) = true; 
 
+	a --> b ²_e g ¸ b --> c ²_e g ¸ c ² z ­ deptSearchP(a , z , g ) = true;
+
 end enrich

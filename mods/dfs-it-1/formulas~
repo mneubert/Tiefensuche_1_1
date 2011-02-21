@@ -2,6 +2,9 @@
 ;; Two semicolons start a line comment
 ;; (: ... :) delimit a comment. They can be nested!
 
+(: xo ... x1 :)
+
+a0 --> a 
 
 ;;; END <- reading stops here
 

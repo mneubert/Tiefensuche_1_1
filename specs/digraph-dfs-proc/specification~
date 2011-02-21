@@ -20,4 +20,6 @@ axioms
 
         pathp(x, g) ¸ x .first = a ¸ x .last = b ­ deptSearchP(a, b ', g) = true;
 
+	a --> b ²_e g ¸ b ² z ­ deptSearchP(a , z , g ) = true; 
+
 end enrich
