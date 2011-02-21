@@ -26,7 +26,7 @@ module
 		n : nat;
 		m : nat;
 		s20 : set;
-		b99 : elem;
+		a0 : elem;
      
     declaration
  
@@ -34,36 +34,35 @@ module
        deptSearchP#(a, z, g; var bbool)
           begin
             var n = 0 in
-	begin
+	   begin
 	    n := getM(a, g) ;	
-            bbool := false ;		    
-            if µ(a ' = [] ¹ z = []) then
-                begin
-                  deptSearchProc#(a ', [], z, g, n; bbool) 
-                end
-end;
+    	    deptSearchProc#(a ', [], z, g, n; bbool)	    
+           end
           end ;
 
        deptSearchProc#(open, close, z, g, n; var bbool) 
-         begin	   	
-           var a = open.first in
-           begin
-             if a ² z then 
-               begin
-                 bbool := true
-               end
-             else 
-               begin
-                 bbool := false ;
-		 close := a ' + close ;
-                 open :=  set2list(outsortSuccs(a, list2set(close), g)) + open.rest ;
-                 if n - # close > 0 ¸ open Ü [] then 
-                   begin 
-                     deptSearchProc#(open, close, z, g, n; bbool) ;
-                   end
-
-               end
-            end
-          end  ;
+         begin		   
+	   bbool := false ;
+           if µ(open = [] ¹ z = [] ¹ n = 0) then
+             begin
+	       var a = open .first in
+	         begin
+	           if a ² z then 
+                     begin
+                       bbool := true
+               	     end
+                   else 		     	
+                     begin
+                       close := a ' + close ;
+                       open :=  set2list(outsortSuccs(a, list2set(close), g)) + open.rest ;                                      
+             	       n := n - 1 ;
+		       if µ( n = 0 ) then 
+			 begin
+  		           deptSearchProc#(open, close, z, g, n ; bbool) ;
+			 end
+                     end
+                 end
+	     end
+	 end ;
 
 end module

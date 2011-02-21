@@ -12,7 +12,7 @@ module
 
     import 
 
-       union_bool_graph
+       digraph-path
 
     procedures
 
@@ -29,30 +29,13 @@ module
 		b99 : elem;
      
     declaration
-
-       findAllVertices#(a, g; var m)
-	begin
-		var s20 = à, b99 = a in
-		begin
-			m := 0 ;
-			s20 := g .vs ;
-				while(s20 Ü à) do
-				begin
-					b99 := s20 .max ;
-					s20 := s20 .butmax ;
-					if(path´(a,b99,g) ¸ a Ü b99) then
-					begin
-						m := m + 1
-					end
-				end
-		end
-	end ;
+ 
 
        deptSearchP#(a, z, g; var bbool)
           begin
             var n = 0 in
 	begin
-	    findAllVertices#(a, g; n) ;	
+	    n := getM(a, g) ;	
             bbool := false ;		    
             if µ(a ' = [] ¹ z = []) then
                 begin
