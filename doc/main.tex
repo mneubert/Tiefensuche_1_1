@@ -1,0 +1,29 @@
+\documentclass[11pt,cleardoubleplain,oneside,a4paper,bibtotoc,listof=totoc]{scrbook}
+
+%Datei für die angepassten Styles laden
+\usepackage{HTWKstyle}
+\usepackage[numbers]{natbib}
+
+\begin{document}
+
+\include{Titelblatt}        % Einfügen des Titelblatts
+
+\cleardoublepage
+
+\pagenumbering{Roman}       %Seitennummerierung römisch Großbuchstaben
+
+\tableofcontents
+
+\pagenumbering{arabic}          %Seitennummerierung Zahlen
+
+\include{Einleitung}
+
+\include{Problembeschreibung}
+
+\include{Spezifikation}
+
+\include{Zusammenfassung}
+
+\include{Verzeichnisse}     % Einfügen der Verzeichnisse
+
+\end{document}

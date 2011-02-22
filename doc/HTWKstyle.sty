@@ -1,0 +1,244 @@
+\ProvidesPackage{HTWKstyle}
+
+%Textfarben
+\usepackage{color}
+\definecolor {Gray} {gray} {0.5} %für die Kapitel- und Part- Überschriften
+
+%Einstellungen der Seitenränder
+\usepackage[left=4cm,right=2.5cm,top=3cm,bottom=2.5cm,includeheadfoot]{geometry}
+
+%skalierbare Schriftgroessen
+\usepackage{type1cm}
+
+%Absätze
+\usepackage{parskip}
+
+% Bilder einbinden
+\usepackage{graphicx}
+
+% Aufzählungen
+\usepackage{enumitem}
+
+%Caption-Packet (http://www.pahlmann.biz/blog/latex/abbildungs_tabellenverzeichnis_caption)
+\usepackage{caption}
+
+%Listings
+\usepackage{listings}
+\lstset{language=sh,frame=lines,framexleftmargin=15pt,numbers=left,
+xleftmargin=15pt,breaklines=true,captionpos=b}
+
+%verschiedene Schriftarten
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\linespread{1.1}
+\usepackage[ngerman]{babel} 
+%\usepackage{setspace}
+%\onehalfspacing
+
+%Tastendarstellung
+\usepackage[german]{keystroke}
+
+%Theoreme
+\usepackage{thmbox}
+\newtheorem[style=L,leftmargin=0.5cm]{thmL}{Definition}
+\newtheorem[M]{thmM}{Definition}
+
+% Tabelle mit gestürzten Kopf
+\usepackage{array} 
+\usepackage{booktabs} 
+\usepackage{multirow} 
+\usepackage{rotating} 
+\usepackage{ragged2e} 
+
+\newcolumntype{R}[1]{% 
+     >{\begin{turn}{90}\begin{minipage}{#1}% 
+         \RaggedRight\arraybackslash\hspace{0pt}}l 
+     <{\end{minipage}\end{turn}}% 
+} 
+
+% mehrseitige Tabelle
+\usepackage{longtable}
+
+% Float 
+\usepackage{float}
+\usepackage{afterpage}
+%\renewcommand{\textfraction}{0}
+
+%Symbole
+\usepackage{pifont}
+
+\newcommand{\changefont}[3]{ 
+\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont} 
+% Infos: http://www.math.tu-dresden.de/~rudl/latex/fonts.pdf
+
+%Links
+\usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref}
+
+
+%%Darstellung des Glossars und Abkürzungsverzeichnisses einstellen     
+
+\usepackage[style=altlist,toc=true,nonumberlist]{glossaries}
+
+
+%\usepackage[    style=altlist,     hypertoc=true,     hyper=true,     number=none,     
+%%cols=2,
+%     border=none,
+%     %     header=plain,
+%          acronym=true %dieser Parameter ist der wichtige     
+%]{glossary} 
+%\newglossarytype[slg]{symbolslist}{syg}{syi} 
+%\makeglossary 
+\makeglossaries
+
+%neue Rechtschreibung
+\usepackage{ngerman}
+
+%Kopf- und Fußzeile
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}}
+
+\fancyhead[EL]{\thepage} % gerade Seiten links
+\fancyhead[ER]{\nouppercase{\leftmark}} % gerade Seiten rechts
+\fancyhead[OL]{\nouppercase{\leftmark}} % ungerade Seite links
+\fancyhead[OR]{\thepage} %ungeradeseiten rechts
+%Linie oben (Header)
+\renewcommand{\headrulewidth}{0.4pt}
+%Linie unten
+\renewcommand{\footrulewidth}{0.4pt}    %  ...bei Bedarf ?!
+%\fancyfoot[OC]{}
+
+
+\fancypagestyle{chapstyle}{
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0.4pt}	
+}
+
+% Kein Header/Footer auf Leerseiten
+\makeatletter
+	\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else\hbox{}
+	\thispagestyle{empty}
+	\newpage
+	\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+% Leerseite an/aus
+\makeatletter
+  \newcommand{\abhierkapitelegal}{%
+    \@openrightfalse
+  }
+  \newcommand{\abhierkapitelrechts}{%
+    \clearpage
+    \@openrighttrue
+  }
+\makeatother
+
+
+
+
+%____________________Kapitel___________________%
+
+% Beispiele unter http://zoonek.free.fr/LaTeX/LaTeX_samples_chapter/0.html
+\makeatletter
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+\def\@makechapterhead#1{%
+	\thispagestyle{chapstyle}
+  \vspace*{120\p@}% Abstand zum oberen Rand
+  {\parindent \z@ \raggedleft \reset@font
+            \scshape  \fontsize{60}{62}{\textsf{\textbf{\changefont{phv}{b}{n}{\textcolor{Gray}{\thechapter}}}}}
+             % bei 60 / 62 Größe der Kapitelzahl anpassbar
+             % Gray wurde in Zeile 20 definiert
+            % mit changefont Schriftart anpassbar, Infos: http://www.math.tu-dresden.de/~rudl/latex/fonts.pdf
+        \par\nobreak
+        \interlinepenalty\@M 
+    \Huge \bfseries  \textsf{#1} \par\nobreak %soll die Kapitelüberschift anders aussehen hier anpassen
+    											% #1 steht als Variable für die Namen der Kapitel
+    \hrulefill % das ist die Linie unter der Überschrift 
+    \par\nobreak
+    \vskip 60\p@ % 80 = Abstand zum Textbeginn darunter
+  }}
+  
+ 
+  
+\def\@makeschapterhead#1{% Vorgaben fÃ¼r die Kapitelüberschriften der Verzeichnisse (Inhaltsverzeichnis etc.)
+  \thispagestyle{chapstyle}
+  \vspace*{10\p@}
+  {\parindent \z@ \raggedleft \reset@font
+            \scshape \ifnum \arabic{chapter} >0
+            			\fontsize{60}{62}{\textsf{\textbf{\changefont{phv}{b}{n}{\textcolor{Gray}{\thechapter}}}}}
+            		 \else            		 	
+            		 	\vphantom{\@chapapp{} \thechapter }
+            		 \fi
+        \par\nobreak
+        \interlinepenalty\@M
+    \Huge \bfseries \textsf{#1} \par\nobreak % hier ist die Anpassung bei Bedarf vorzunehmen
+    										% #1 steht als Variable für die Namen des Verzeichnisses
+    \hrulefill % wieder die Linie
+    \par\nobreak
+    \vskip 40\p@ % 40 = Abstand zum Textbeginn darunter
+  }}
+%__________________Kapitel_ENDE________________%
+
+% ______________________Part____________________%
+
+% Polnische Kommentare mittels translate.google übersetzt -> stehen in () !
+
+\renewcommand\part{% neuer Partbefehl
+    \cleardoublepage%                   (Setzen Sie auf der rechten Seite)
+    \thispagestyle{plain}%             (ohne die Kopf-und Fußzeile)
+    \if@twocolumn%
+        \onecolumn%                     (immer eine neue Spalte)
+        \@tempswatrue%
+     \else%
+        \@tempswafalse%
+    \fi%
+    \hbox{}%                            (Seite, füllen Sie Punkt k)
+    \vfil%
+    \secdef\@part\@spart}%
+%
+\def\@part[#1]#2{%                      (Version ohne Sterne)
+    \ifnum \c@secnumdepth >-2%          
+        \relax%
+        \refstepcounter{part}%          (für die Nummerierung der Titel)
+        \addcontentsline{toc}{part}{\partname~\thepart \hskip 0.6cm #1}% Anpassung Darstellung im Inhaltsverz. 
+                                %       (Legen Sie das Inhaltsverzeichnis)
+     \else%
+        \addcontentsline{toc}{part}{#1}% (ist nicht für die Nummerierung)
+                                %       (Tragen Sie bitte den Titel nur Inhalt)
+    \fi%
+    \markboth{}{}%                      (Seite löschen)
+    {%
+     \flushright%                        rechtsbündig machen (ursprünglich: Absatz zentrieren)
+     \interlinepenalty \@M%             (den gesamten Titel auf einer Seite)
+     \normalfont%
+     \ifnum \c@secnumdepth >-2%         
+         \relax%                        (Wenn Sie für die Nummerierung)
+                                %       (Darstellung der Anzahl der Band)
+         \huge\bfseries \changefont{phv}{b}{n}{\partname~\thepart} % Anpassung "Teil XX"
+         \par%
+         \vskip 20\p@%   Abstand zur Teilüberschirft
+     \fi%
+     \Huge \bfseries \fontsize{50}{52}{\textsf{\textbf{\changefont{phv}{b}{n}{\textcolor{Gray}{#2}}}}}\par%            		% Anpassung der Teilüberschrift
+     \vskip0.2cm % Abstand zur Linie
+     \hrulefill % Linie 
+     
+     %
+     %Hier besteht noch die Möglichkeit ZusÃ¤tzliches einzufügen
+     %
+     %
+     
+    }%
+    \@endpart}%
+%
+\def\@spart#1{%            (Sterne-Version)
+    {%                               (zeigen nur die Titel der Band)
+     \centering%
+     \interlinepenalty \@M%
+     \normalfont%
+     \Huge \bfseries #1 \par%
+    }%
+    \@endpart}%
+% ______________________Part_ENDE___________________%
