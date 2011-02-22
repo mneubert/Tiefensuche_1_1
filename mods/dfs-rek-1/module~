@@ -35,7 +35,7 @@ module
           begin
             var n = 0 in
 	   begin
-	    n := getM(a, g) ;	
+	    n := getM(a, g) + 1 ;	
     	    deptSearchProc#(a ', [], z, g, n; bbool)	    
            end
           end ;
