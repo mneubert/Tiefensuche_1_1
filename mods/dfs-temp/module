@@ -32,7 +32,7 @@ module
 				begin
 					b99 := s20 .max ;
 					s20 := s20 .butmax ;
-					if(path´(a,b99,g) ¸ a Ü b99) then
+					if(path´(a,b99,g)) then
 					begin
 						n := n + 1
 					end

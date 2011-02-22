@@ -4,26 +4,9 @@ module
 
   refinement
 
-     (: clauses of the form 'importsort implements exportsort;' :)
-     (: representation of sorts :)
+     representation of operations  
 
-     
-     (: clauses of the form 'proc implements exportop;':)
-     (: representation of operations :)
-
-
-     (: clauses of the form 'eproc : exportsort;' where eproc implements equality
-        i.e. eproc should have mode (importsort,importsort) : bool :)
-     (: equality :)
-
-     (: clauses of the form 'rproc : exportsort;' where rproc gives a restriction
-        which import data are used as representation of export
-        i.e. rproc should have mode (importsort) : bool :)
-     (: restriction :)
-
-     (: clauses of the form 'uproc : exportsort;' for every generated export sort
-        uproc should have mode (importsort) : bool :)
-     (: uniform restriction :)
+      getM# implements getM;
 
      implementation
 
@@ -33,9 +16,29 @@ module
 
      (: procedures :)
 
-     (: variables :)
+      variables 
+		s20 : set;
+		b99 : elem;
 
-     (: declaration :)
+      declaration 
+
+ 	getM#(a, g;  n)
+	begin
+		var s20 = à, b99 = a in
+		begin
+			n := 0 ;
+			s20 := g .vs ;
+				while(s20 Ü à) do
+				begin
+					b99 := s20 .max ;
+					s20 := s20 .butmax ;
+					if(path´(a,b99,g) ¸ a Ü b99) then
+					begin
+						n := n + 1
+					end
+				end
+		end
+	end ;
 
 
 
