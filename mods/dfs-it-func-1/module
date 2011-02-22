@@ -1,0 +1,82 @@
+module
+
+  export digraph-dfs-func
+
+  refinement
+
+    representation of operations  
+
+    deptSearchF# implements deptSearchF;
+
+   
+     implementation
+
+     import digraph-path
+
+     variables 
+		open : list;
+		close : list;
+		path : list;
+		vorgaenger: digraph;
+		open2 : list;
+		start : elem;
+                n1 : nat;
+		n2 : nat;
+     
+    declaration
+
+     deptSearchF#(a, z, g; y)
+     begin
+        var open =  [] + a , close =  [], n0 = 0, vorgaenger = @g, open2 = [], start = a, n = 0, n1 = 0, n2 = 0
+	in 
+	  begin 
+	    y := [] ;
+            n0 := getM( a , g );
+            n := n0;
+            n1 := n0;
+	    n2 := n0;
+              if µ(a ' = [] ¹ z = []) then
+              begin
+                  (:vorgaenger := vorgaenger +v a;:)
+                  if a ² z then
+		  begin
+	            y := y + a         
+		  end
+                  else
+                  begin
+                    while n0 > 0 ¸ open Ü [] do
+	            begin
+		    	a := open .first ;
+                        n0 := n0 - 1 ;
+			if a ² z then
+			(: neuer Baum wird rueckwaerts durchlaufen, bis Startknoten, kann max. n0 mal passieren :)
+		    	begin
+                          y := y + a;
+			  while a Ü start ¸ n1 > 0 do
+			    begin
+				y := y + set2list(outsortSuccs(a, list2set(y), vorgaenger));
+				(: es sollte nur einen Vorgaenger geben :)
+                                a := y.last;
+                                n1 := n1 - 1;
+                            end
+		    	end
+			else
+			begin
+                    	close := a ' + close;
+                    	open2 :=  set2list(outsortSuccs(a, list2set(close), g));
+			open := open2 + open.rest;
+                        
+			(: neuer Baum erzeugt, der Verweise auf die Vorgaengerknoten enthaelt, kann max. n0 mal passieren :)
+			while open2 Ü [] ¸ n2 > 0 do 
+			begin
+				vorgaenger := vorgaenger +e (open2.first --> a);
+				open2 := open2.rest;
+				n2 := n2 - 1;
+			end
+			end
+	            end
+                  end
+              end
+	  end		
+     end
+end module
