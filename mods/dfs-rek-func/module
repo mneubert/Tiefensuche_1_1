@@ -1,0 +1,74 @@
+module
+
+  export 
+    
+      digraph-dfs-func
+
+  refinement
+    representation of operations  
+
+      deptSearchF# implements deptSearchF;
+
+    implementation
+
+    import 
+
+     	digraph-path
+
+    procedures
+
+       deptSearchProcF#   elem , list , list , list , digraph, nat  : list , nat ;
+
+    variables 
+		open : list;
+		close : list;
+		bbool : bool;
+		path : list;
+                
+     
+    declaration
+
+
+    deptSearchF#(a, z, g; y)
+          begin
+            var path = [], n = 0, n0 = 0 in
+            begin
+              n := getM(a, g) ;
+              n0 := n;
+              deptSearchProcF#(a, [], z, [], g, n; path , n0);
+	      y := path 
+             end 
+           end ;
+
+       deptSearchProcF#(a, close, z, y, g, n; path , n0) 
+         begin
+	   path := [] ;
+           n0 := n;
+           var open = a ' in
+           begin
+             if µ(open = [] ¹ z = [] ¹ n = 0) then
+	     begin
+	       y :=  y +  a ' ;
+               if a ² z then 
+               begin
+                 path := y
+               end
+               else 
+               begin
+                 close := a ' + close ;
+                 open :=  set2list(outsortSuccs(a, list2set(close), g)) + open .rest ;
+                 n := n - 1 ;
+                 n0 := n;
+                 (: zusaetzliche Abbruchbedingung path Ü [], da dann abgebruchen werden kann :)
+                 while µ (n = 0 ¹ open = [] ¹ path Ü []) do 
+                 begin
+                   (: als 2. Argument (open + close) nicht noetig, wir suchen ja irgendeinen Weg, nicht den kuerzesten; nur mit zusaetzlicher Abbruchbedingung :)
+                   deptSearchProcF#(open.first, close, z, y, g, n; path, n0) ;
+                   (: n:=n0, da sonst die Information des Dekrementierens verloren geht beim Backtracking :)
+                   n := n0;
+                 end
+               end
+            end
+          end
+        end  
+end module
