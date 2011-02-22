@@ -15,6 +15,6 @@ functions
 axioms
 
 getM(a, @g) = 0 ;
-µ b ²_v g ­ getM(a, (g +v b) +e (a --> b)) = getM(a, g) + 1;
+µ b ²_v g ¸ a ²_v g  ­ getM(a, g +e (a --> b)) = getM(a, g) + 1;
 
 end enrich
