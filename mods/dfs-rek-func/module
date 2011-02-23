@@ -24,7 +24,7 @@ module
 		close : list;
 		bbool : bool;
 		path : list;
-                
+                n, n0 : nat;
      
     declaration
 

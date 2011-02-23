@@ -66,6 +66,7 @@ module
                    deptSearchProcF#(open.first, close, z, y, g, n; path, n0) ;
                    (: n:=n0, da sonst die Information des Dekrementierens verloren geht beim Backtracking :)
                    n := n0;
+                   open := open.rest;
                  end
                end
             end
