@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../unit.xsl"?>
+<KIVSPEC name="digraph-dfs-func"><SPECBODY>enrich <a href="../../../specs/union_bool_graph/export/unit.xml">union_bool_graph</a> with
+   
+   functions 
+      deptSearchF : elem × list × digraph → list;
+   
+   axioms 
+       ⊦ z = [] ∧ a ∈_v g ∨ a ' = [] → deptSearchF(a, z, g) = [];
+       ⊦ pathp(x, g) ∧ x .first = a ∧ x .last = b → deptSearchF(a, b ', g) = x;
+       ⊦ a --&gt; b ∈_e g ∧ b ∈ z → deptSearchF(a, z, g) .first = a;
+       ⊦ a --&gt; b ∈_e g ∧ b ∈ z → deptSearchF(a, z, g) .last = b;
+       ⊦ a --&gt; b ∈_e g ∧ b --&gt; c ∈_e g ∧ c ∈ z → deptSearchF(a, z, g) .first = a;
+       ⊦ a --&gt; b ∈_e g ∧ b --&gt; c ∈_e g ∧ c ∈ z → deptSearchF(a, z, g) .last = b;
+   
+end enrich</SPECBODY></KIVSPEC>

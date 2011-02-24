@@ -1,0 +1,87 @@
+\begin{tabbing}\label{dfs-rek-1-module}%
+dfs-rek-1 = \\
+{\bf mod}\={\bf ule}\+\\
+{\bf export} digraph-dfs-proc\\
+{\bf ref}\={\bf inement}\+\\
+{\bf rep}\= {\bf resentation of operations}\+\\
+\begin{tabular}{lcl}
+deptSearchP\# & implements & deptSearchP;
+\end{tabular}\-\\
+
+\\
+{\bf implementation}\\
+{\bf import} digraph-path\\
+\\
+{\bf proc}\={\bf edures}\+\\
+\begin{tabular}{lll}
+deptSearchProc\#& list $\times$ list $\times$ list $\times$ digraph $\times$ nat & : bool;\\
+findAllVertices\#& elem $\times$ digraph & : nat;
+\end{tabular}\-\\
+\\
+{\bf vari}\={\bf ables}\+\\
+open, close: list;\\
+bbool: bool;\\
+n, m: nat;\\
+\Var{s}{20}: set;\\
+\Var{a}{0}: elem;
+\-\\
+\\
+
+               {\bf declaration}
+\end{tabbing}
+
+{\parindent1cm 
+deptSearchP\#(a, z, g; {\bf var} bbool) \\
+{\bf \{}\\
+{\bf var} n = 0 {\bf in} {\bf \{} n := getM(a, g); deptSearchProc\#(a ', [], z, g, n{\bf ; }bbool){\bf \}}\\
+{\bf \}};
+
+\bigskip
+
+deptSearchProc\#(open, close, z, g, n; {\bf var} bbool) \\
+{\bf \{}\\
+bbool := false;\\
+ {\bf if} \Not (open = [] \Or z = [] \Or n = 0) {\bf then}\\
+ \tabif\  {\bf var} a = open.first {\bf in}\\
+ \tabif\ {\bf if} a $\in$ z {\bf then} bbool := true {\bf else}\\
+ \tabif\  {\bf \{}\\
+ \tabif\ \tabbe close := a ' + close;\\
+ \tabif\ \tabbe open := set2list(outsortSuccs(a, list2set(close), g)) + open.rest;\\
+ \tabif\ \tabbe n := n - 1;\\
+ \tabif\ \tabbe {\bf if} n $\neq$ 0 {\bf then} deptSearchProc\#(open, close, z, g, n{\bf ; }bbool)\\
+ \tabif\ {\bf \}}\\
+{\bf \}}
+}
+
+
+
+\bigskip
+
+{\bf uniform restriction declarations:}
+
+deptSearchP\#(a, z, g; {\bf var} bbool) \\
+\{\\
+{\bf let} n = 0 {\bf in} \{n := getM(a, g); deptSearchProc\#\}\\
+\};
+
+\bigskip
+
+deptSearchProc\#(open, close, z, g, n; {\bf var} bbool) \\
+\{\\
+bbool := false;\\
+ {\bf if} \Not (open = [] \Or z = [] \Or n = 0) {\bf then}\\
+ \tabif\  {\bf let} a = open.first {\bf in}\\
+ \tabif\ {\bf if} a $\in$ z {\bf then} bbool := true {\bf else}\\
+ \tabif\  {\bf \{}\\
+ \tabif\ \tabbe close := a ' + close;\\
+ \tabif\ \tabbe open := set2list(outsortSuccs(a, list2set(close), g)) + open.rest;\\
+ \tabif\ \tabbe n := n - 1;\\
+ \tabif\ \tabbe {\bf if} n $\neq$ 0 {\bf then} deptSearchProc\#\\
+ \tabif\ {\bf \}}\\
+\}
+
+\bigskip
+
+
+
+\par\mbox{}\hrulefill\mbox{}\par

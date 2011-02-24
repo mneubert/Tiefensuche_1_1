@@ -1,0 +1,113 @@
+\begin{tabbing}\label{dfs-rek-func-module}%
+dfs-rek-func = \\
+{\bf mod}\={\bf ule}\+\\
+{\bf export} digraph-dfs-func\\
+{\bf ref}\={\bf inement}\+\\
+{\bf rep}\= {\bf resentation of operations}\+\\
+\begin{tabular}{lcl}
+deptSearchF\# & implements & deptSearchF;
+\end{tabular}\-\\
+
+\\
+{\bf implementation}\\
+{\bf import} digraph-path\\
+\\
+{\bf procedures} deptSearchProcF\#elem$\times$ list$\times$ list$\times$ list$\times$ digraph$\times$ nat : list $\times$ nat;\\
+\\
+{\bf vari}\={\bf ables}\+\\
+open, close, path: list;\\
+bbool: bool;\\
+n, \Var{n}{0}: nat;
+\-\\
+\\
+
+               {\bf declaration}
+\end{tabbing}
+
+{\parindent1cm 
+deptSearchF\#(a, z, g; {\bf var} y) \\
+{\bf \{}\\
+{\bf var} path = [], n = 0, \Var{n}{0} = 0 {\bf in}\\
+{\bf \{}\\
+\tabbe n := getM(a, g);\\
+\tabbe \Var{n}{0} := n;\\
+\tabbe deptSearchProcF\#(a, [], z, [], g, n{\bf ; }path, \Var{n}{0});\\
+\tabbe y := path\\
+{\bf \}}\\
+{\bf \}};
+
+\bigskip
+
+deptSearchProcF\#(a, close, z, y, g, n; {\bf var} path, \Var{n}{0}) \\
+{\bf \{}\\
+path := [];\\
+ \Var{n}{0} := n;\\
+ {\bf var} open = a ' {\bf in}\\
+ {\bf if} \Not (open = [] \Or z = [] \Or n = 0) {\bf then}\\
+ \tabif\  {\bf \{}\\
+ \tabif\ \tabbe y := y + a ';\\
+ \tabif\ \tabbe {\bf if} a $\in$ z {\bf then} path := y {\bf else}\\
+ \tabif\ \tabbe  {\bf \{}\\
+ \tabif\ \tabbe \tabbe close := a ' + close;\\
+ \tabif\ \tabbe \tabbe open := set2list(outsortSuccs(a, list2set(close), g)) + open.rest;\\
+ \tabif\ \tabbe \tabbe n := n - 1;\\
+ \tabif\ \tabbe \tabbe \Var{n}{0} := n;\\
+ \tabif\ \tabbe \tabbe {\bf while} \Not (n = 0 \Or open = [] \Or path $\neq$ []) {\bf do}\\
+ \tabif\ \tabbe \tabbe \tab{wh} {\bf \{}\\
+ \tabif\ \tabbe \tabbe \tab{wh}\tabbe deptSearchProcF\#(open.first, close, z, y, g, n{\bf ; }path, \Var{n}{0});\\
+ \tabif\ \tabbe \tabbe \tab{wh}\tabbe n := \Var{n}{0};\\
+ \tabif\ \tabbe \tabbe \tab{wh}\tabbe open := open.rest\\
+ \tabif\ \tabbe \tabbe \tab{wh}{\bf \}}\\
+ \tabif\ \tabbe {\bf \}}\\
+ \tabif\ {\bf \}}\\
+{\bf \}}
+}
+
+
+
+\bigskip
+
+{\bf uniform restriction declarations:}
+
+deptSearchF\#(a, z, g; {\bf var} y) \\
+\{\\
+{\bf let} path = [], n = 0, \Var{n}{0} = 0 {\bf in}\\
+{\bf \{}\\
+\tabbe n := getM(a, g);\\
+\tabbe \Var{n}{0} := n;\\
+\tabbe deptSearchProcF\#;\\
+\tabbe y := path\\
+{\bf \}}\\
+\};
+
+\bigskip
+
+deptSearchProcF\#(a, close, z, y, g, n; {\bf var} path, \Var{n}{0}) \\
+\{\\
+path := [];\\
+ \Var{n}{0} := n;\\
+ {\bf let} open = a ' {\bf in}\\
+ {\bf if} \Not (open = [] \Or z = [] \Or n = 0) {\bf then}\\
+ \tabif\  {\bf \{}\\
+ \tabif\ \tabbe y := y + a ';\\
+ \tabif\ \tabbe {\bf if} a $\in$ z {\bf then} path := y {\bf else}\\
+ \tabif\ \tabbe  {\bf \{}\\
+ \tabif\ \tabbe \tabbe close := a ' + close;\\
+ \tabif\ \tabbe \tabbe open := set2list(outsortSuccs(a, list2set(close), g)) + open.rest;\\
+ \tabif\ \tabbe \tabbe n := n - 1;\\
+ \tabif\ \tabbe \tabbe \Var{n}{0} := n;\\
+ \tabif\ \tabbe \tabbe {\bf while} \Not (n = 0 \Or open = [] \Or path $\neq$ []) {\bf do}\\
+ \tabif\ \tabbe \tabbe \tab{wh} {\bf \{}\\
+ \tabif\ \tabbe \tabbe \tab{wh}\tabbe deptSearchProcF\#;\\
+ \tabif\ \tabbe \tabbe \tab{wh}\tabbe n := \Var{n}{0};\\
+ \tabif\ \tabbe \tabbe \tab{wh}\tabbe open := open.rest\\
+ \tabif\ \tabbe \tabbe \tab{wh}{\bf \}}\\
+ \tabif\ \tabbe {\bf \}}\\
+ \tabif\ {\bf \}}\\
+\}
+
+\bigskip
+
+
+
+\par\mbox{}\hrulefill\mbox{}\par
