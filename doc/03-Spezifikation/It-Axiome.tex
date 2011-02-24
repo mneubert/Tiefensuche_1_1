@@ -1,2 +1,37 @@
-\section{Spezifikaton "`Iteration"' - Axiome}
+\section{Spezifikation "`digraph-dfs-proc"'}
+
+Ausgehend von den Überlegungen in Kapitel 2 soll zunächst eine Tiefensuche als Prozedur umgesetzt werden.
+Dies bedeutet, dass die Rückgabe des Programmes ein Wahrheitswert ist. Enthält der Pfad G einen Weg zum Startknoten zur Zielknotenmenge, so
+wird TRUE zurück geliefert, anderfalls FALSE. Im folgenden Absatz sieht man die Signatur der Spezifikation:
+
+\label{digraph-dfs-proc-spec}%
+digraph-dfs-proc = \\
+{\bf enrich} digraph-basic, union\_bool\_graph {\bf with}\+\\
+{\bf predicates} deptSearchP  : elem $\times$ list $\times$ digraph;
+
+{\bf axioms}
+
+\vdash z = [] \And a $\in$\_v g \Or a ' = [] \Imp (deptSearchP(a, z, g) \Equiv false);
+
+\vdash pathp(x, g) \And x.first = a \And x.last = b \Imp (deptSearchP(a, b ', g) \Equiv true);
+
+\vdash a --$>$ b $\in$\_e g \And b $\in$ z \Imp (deptSearchP(a, z, g) \Equiv true);
+
+\vdash a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp (deptSearchP(a, z, g) \Equiv true);
+
+{\bf end enrich}
+
+Die Spezifikation erweitert hierbei die vorhandenen Spezifikationen digraph-basic sowie union\_bool\_graph, welche Hilfssätze enthalten und im Kapitel 3.xx erläutert werden.
+Die in der Spezifikation definierte Prozedur deptSearchP bildet dabei drei Eingabeparameter elem $\times$ list $\times$ digraph auf einen Wahrheitswert ab.
+Dabei bezeichnet "`elem"' den Startknoten, "`list"' die Menge der Zielknoten und "`digraph"' den Graphen.
+Des Weiteren werden in der Spezifikation verschiedene Axiome deklariert:\\
+\begin{itemize}
+\item Das erste Axiom beschreibt den Fall, dass unzulässige Parameter beim Prozeduraufruf übergeben werden. Dies ist der Fall, wenn keine Zielknoten angegeben werden oder a ein leerer Knoten ist. In diesem Fall existiert kein Pfad im Graph und somit soll die Prozedur FALSE zurückgeben.  
+\item Das zweite Axiom nimmt Bezug auf die Signatur pathp, welche in der Graphenbibliothek implementiert wurde und überprüft, ob es einen Pfad x im Graphen g gibt. Ist dies der Fall und der Anfangsknoten des Pfades stimmt mit dem Startknoten a über ein und der letzte Knoten des Pfades ist ein Element der Zielknotenmenge, dann liefert die Prozedur deptSearchP TRUE zurück.
+\item Im dritten Axiom wird der Bezug zum Begriff der Kante im Graphen gebildet. Wenn es eine Kante von Knoten a nach Knoten b im Graphen g gibt und b in der Zielknotenmenge liegt, dann muss die Methode deptSearchP diesen Weg finden. Dieses Axiom ist ein Spezialfall des vierten Axioms.
+\item Im vierten Axiom wird der Begriff der Kante um die transitive Eigenschaft erweitert. Unsere Prozedur muss also auch dann einen Pfad finden bzw. TRUE zurückliefern, wenn es von Knoten a über einen anderen Knoten b einen Weg in die Zielknotenmenge gibt. Setzt man in diesem Fall b = c, hat man den Spezialfall, welcher in Axiom 3 beschrieben wurde. 
+\end{itemize}
+
+
+
 
