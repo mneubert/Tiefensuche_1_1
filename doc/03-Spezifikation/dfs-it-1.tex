@@ -1,2 +1,199 @@
 \section{Modul "`dfs-it-1"'}
 
+Das Modul "`dfs-it-1"' implementiert die Spezifikation "`digraph-dfs-proc"', also die Tiefensuche als Prozedur mit der Rückgabe eines Wahrheitswertes. Die genaue Implementierung ist unten aufgezeigt. Allgemein kann gesagt werden, dass zunächst die fehlerhaften Eingaben abgefangen werden, bevor der eigentliche Algorithmus zum Einsatz kommt. Dabei wird in einer Schleife so lange ein neuer Knoten expandiert, bis entweder ein Pfad gefunden wurde, oder alle erreichbaren Knoten abgearbeitet wurden. Für letzteren Fall wurde die Hilfsfunktion "`getM"' einegführt, welche im Kapitel 3.xx noch genauer erläutert wird. In der while-Schleife wird wie erwähnt ein Knoten von der open-Liste untersucht und geschaut, ob von ihm erreichbare Knoten noch nicht auf der close-Liste sind. Dazu wird die Funktion "`outsortSuccs"' verwendet, welche aus der Graphenbibliothek stammt.\\
+Unterhalb der Deklaration findet man noch einmal die Axiome. Hierbei wird aufgelistet, in wie weit die Axiome mit der Implementierung bewiesen werden konnten und wie die Abhängigkeiten untereinander sind. 
+
+{\parindent0cm
+
+
+{\LARGE\bf decl}\label{lemma-decl}
+
+\medskip
+
+deptSearchP\#(a, z, g; {\bf var} bbool) \\
+\{\\
+{\bf let} open = [] + a, close = [], \Var{n}{0} = 0, \Var{a}{0} = a {\bf in}\\
+{\bf \{}\\
+\tabbe bbool := false;\\
+\tabbe \Var{n}{0} := getM(a, g) + 1;\\
+\tabbe {\bf if} \Not (a ' = [] \Or z = []) {\bf then}\\
+\tabbe \tabif\  {\bf if} a $\in$ z {\bf then} bbool := true {\bf else}\\
+\tabbe \tabif\  {\bf \{}\\
+\tabbe \tabif\ \tabbe {\bf while} \Var{n}{0} $>$ 0 \And (bbool \Equiv false) \And (open $\neq$ []) {\bf do}\\
+\tabbe \tabif\ \tabbe \tab{wh} {\bf \{}\\
+\tabbe \tabif\ \tabbe \tab{wh}\tabbe \Var{a}{0} := open.first;\\
+\tabbe \tabif\ \tabbe \tab{wh}\tabbe {\bf if} \Var{a}{0} $\in$ z {\bf then} bbool := true {\bf else}\\
+\tabbe \tabif\ \tabbe \tab{wh}\tabbe  {\bf \{}\\
+\tabbe \tabif\ \tabbe \tab{wh}\tabbe \tabbe \Var{n}{0} := \Var{n}{0} - 1;\\
+\tabbe \tabif\ \tabbe \tab{wh}\tabbe \tabbe close := \Var{a}{0} ' + close;\\
+\tabbe \tabif\ \tabbe \tab{wh}\tabbe \tabbe open := set2list(outsortSuccs(\Var{a}{0}, list2set(close), g)) + open.rest\\
+\tabbe \tabif\ \tabbe \tab{wh}\tabbe {\bf \}}\\
+\tabbe \tabif\ \tabbe \tab{wh}{\bf \}};\\
+\tabbe \tabif\ \tabbe {\bf if} \Var{n}{0} = 0 {\bf then} bbool := false\\
+\tabbe \tabif\ {\bf \}}\\
+{\bf \}}\\
+\}
+
+\medskip
+
+{\LARGE\bf Term-deptsearchpjsiz}\label{lemma-Term-deptsearchpjsiz}
+
+\medskip
+
+ \Fol \Do deptSearchP\#\Dc true
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : decl
+\item       used by      : Exp-02, Exp-03, Exp-04
+\item       interactions : 47
+\item       proof steps  : 47
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Exp-01}\label{lemma-Exp-01}
+
+\medskip
+
+ \Fol z = [] \And a $\in$\_v g \Or a ' = [] \Imp (\Do deptSearchP\#\Dc bbool \Equiv false)
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : decl
+\item       interactions : 0
+\item       proof steps  : 8
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Exp-02}\label{lemma-Exp-02}
+
+\medskip
+
+ \Fol pathp(x, g) \And x.first = a \And x.last = b \Imp (\Do deptSearchP\#\Dc bbool \Equiv true)
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchpjsiz
+\item       interactions : 1
+\item       proof steps  : 2
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Exp-03}\label{lemma-Exp-03}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b $\in$ z \Imp (\Do deptSearchP\#\Dc bbool \Equiv true)
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchpjsiz
+\item       interactions : 3
+\item       proof steps  : 4
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Exp-04}\label{lemma-Exp-04}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp (\Do deptSearchP\#\Dc bbool \Equiv true)
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchpjsiz
+\item       interactions : 1
+\item       proof steps  : 2
+\end{itemize}
+
+\medskip
+
+Wie zu sehen ist, konnten alle Axiome bewiesen werden. Dabei wurde bei den Axiomen 2 bis 4 auf den Terminationsbeweis zurück gegriffen. In folgendem Abschnitt sind noch einmal die bei den Beweisen verwendeten Beweisschritte aufgeführt.
+
+Statistic for each theorem:
+
+\begin{supertabular}{l|r|r|r|r}
+	& proof steps & interactions & automation & induction\\ \hline
+Term-deptsearchpjsiz & 47 & 47 & 0.0 \% & nat\\
+Exp-01 & 8 & 0 & 100.0 \% & ---\\
+Exp-03 & 4 & 3 & 25.0 \% & ---\\
+Exp-04 & 2 & 1 & 50.0 \% & ---\\
+Exp-02 & 2 & 1 & 50.0 \% & ---\\
+
+\end{supertabular}
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+Interactive & 52 & 82.5 \% \\
+symbolic execution & 5 & 7.9 \% \\
+System & 4 & 6.3 \% \\
+simplifier & 1 & 1.5 \% \\
+weak unfold & 1 & 1.5 \% \\
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+assign right & 13 & 20.6 \% \\
+simplifier & 8 & 12.6 \% \\
+if right & 6 & 9.5 \% \\
+normalize & 4 & 6.3 \% \\
+insert lemma & 4 & 6.3 \% \\
+skip right & 4 & 6.3 \% \\
+assign left & 3 & 4.7 \% \\
+while exit right & 3 & 4.7 \% \\
+insert elim lemma & 2 & 3.1 \% \\
+split left & 2 & 3.1 \% \\
+while right & 1 & 1.5 \% \\
+case distinction & 1 & 1.5 \% \\
+cut formula & 1 & 1.5 \% \\
+skip left & 1 & 1.5 \% \\
+apply induction & 1 & 1.5 \% \\
+if negative left & 1 & 1.5 \% \\
+induction & 1 & 1.5 \% \\
+call left & 1 & 1.5 \% \\
+weakening & 1 & 1.5 \% \\
+vardecls left & 1 & 1.5 \% \\
+split right & 1 & 1.5 \% \\
+call right & 1 & 1.5 \% \\
+vardecls right & 1 & 1.5 \% \\
+execute while & 1 & 1.5 \% \\
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchpjsiz & 4 & 66.6 \% \\
+decl & 2 & 33.3 \% \\
+
+\end{supertabular}

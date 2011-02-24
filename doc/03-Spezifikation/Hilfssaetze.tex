@@ -1,2 +1,153 @@
-\section{Hilfssätze}
+\section{"`Hilfssätze"' - Spezifikation und Module}
 
+Bei der Bearbeitung des Projektes und der Beweisführung mussten verschiedene Ansätze aus der Graphenbibliothek zusammengeführt sowie Teilbeweise ausgelagert werden, da sie in mehreren Beweisen notwendig waren.\\
+Zunächst werde die Spezifikation "`union\_bool\_graph"' betrachtet, welche die notwendigen Pakete der Graphenbibliothek zusammenfasst. Folgenden die verwendete Spezifikation:
+
+union\_bool\_graph \label{union_bool_graph-spec} = digraph-outsorted-neighbours + bool
+
+\\
+Eine weitere Spezifikation ist "`digraph-path"', in welcher die in Kapitel 3.1 erwähnte Signatur "`getM"' definiert wird.
+
+\label{digraph-path-spec}%
+digraph-path = \\
+{\bf enr}\={\bf ich} union\_bool\_graph {\bf with}\+\\
+{\bf functions} getM  : elem $\times$ digraph \Imp  nat ;
+{\bf axioms}
+
+\begin{quote}
+getM(a, @g) = 0;
+
+getM(a, @g +v a) = 1;
+
+\Not b $\in$\_v g \And a $\in$\_v g \Imp getM(a, g +e a --$>$ b) = getM(a, g) + 1;
+
+\end{quote}
+{\bf end enrich}
+
+Die Methode "`getM"' bekommt sowohl einen Knoten a sowie einen Graphen g übergeben und gibt eine Zahl m zurück. Diese bezeichnet hierbei die Anzahl der von dem Knoten a im Graphen g erreichbaren Knoten, wobei sowohl direkt erreichbare als auch über transitive Kanten erreichbare berücksichtigt werden. Auch hier werden wieder drei Axiome definiert:
+
+\begin{itemize}
+	\item Axiom 1 gibt dann, dass in einem leeren Graphen kein Knoten von a erreicht werden kann.
+	\item In Axiom 2 wird der leere Graph um einen Knoten a erweitert. Da Anzahl der von a erreichbaren Knoten ist in diesem Fall 1.
+	\item Im dritten Axiom wird ein Knoten b, welche noch nicht im Graphen lag sowie eine Kante vom Knoten an zu Knoten b hinzugefügt. Die Anzahl der erreichbaren Knoten entspricht nun der Anzahl der erreichbaren Knoten ohne den Knoten b plus 1. 
+\end{itemize}
+\\
+Die Spezifikation wird durch das Modul "`dfs-temp"' implementiert. Folgend ist die Implementierung der Funktion "`getM"' zu sehen.
+
+\medskip
+
+getM\#(a, g; {\bf var} n) \\
+\{\\
+{\bf let} \Var{s}{20} = $\emptyset$, \Var{b}{99} = a {\bf in}\\
+{\bf \{}\\
+\tabbe n := 0;\\
+\tabbe \Var{s}{20} := g.vs;\\
+\tabbe {\bf while} \Var{s}{20} $\neq$ $\emptyset$ {\bf do}\\
+\tabbe \tab{wh} \{\Var{b}{99} := \Var{s}{20}.max; \Var{s}{20} := \Var{s}{20}.butmax; {\bf if} path$\exists$(a, \Var{b}{99}, g) {\bf then} n := n + 1\}\\
+{\bf \}}\\
+\}
+
+Für einen gegebenen Knoten werden in einer Schleife alle anderen Knoten des Graphen betrachtet. Mit der Funktion "`path$\exists$"' aus der Graphenbibliothek wird dann überprüft, ob es einen Pfad zwischen den beiden Knoten gibt. Wenn ja, wird die Zählvariable erhöht. \\
+Die Beweise der Axiome gelangen alle, wie sich in folgendem Abschnitt sehen lässt. 
+\medskip
+
+Term-getmjsiz: 
+ \Fol \Do getM\#\Dc\ true
+
+
+uses: (decl)\\
+used by: (Exp-01 Exp-03)\\
+Proof steps: 50, interactions: 50
+
+\medskip
+
+Exp-01: 
+\begin{flushleft}
+
+
+\Fol
+
+\Not b $\in$\_v g \And a $\in$\_v g \Imp \Do getM\#\Dc \Do getM\#\Dc m = \Var{m}{0} + 1
+
+\end{flushleft}
+
+
+uses: (Term-getmjsiz)\\
+Proof steps: 2, interactions: 1
+
+\medskip
+
+Exp-02: 
+ \Fol \Do getM\#\Dc\ m = 0
+
+
+uses: (decl)\\
+Proof steps: 6, interactions: 6
+
+\medskip
+
+Exp-03: 
+ \Fol \Do getM\#\Dc\ m = 1
+
+
+uses: (Term-getmjsiz)\\
+Proof steps: 1, interactions: 1
+
+\medskip
+
+Auch hier sei wieder auf die verwendeten Beweisschritte hingewiesen, welche in den folgenden Tabellen aufgeführt sind:
+
+Statistic for each theorem:
+
+\begin{supertabular}{l|r|r|r|r}
+	& proof steps & interactions & automation & induction\\ \hline
+Term-getmjsiz & 50 & 50 & 0.0 \% & nat\\
+Exp-02 & 6 & 6 & 0.0 \% & ---\\
+Exp-01 & 2 & 1 & 50.0 \% & ---\\
+Exp-03 & 1 & 1 & 0.0 \% & ---\\
+
+\end{supertabular}
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+Interactive & 57 & 98.2 \% \\
+System & 1 & 1.7 \% \\
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+insert rewrite lemma & 14 & 24.1 \% \\
+cut formula & 9 & 15.5 \% \\
+assign right & 8 & 13.7 \% \\
+simplifier & 6 & 10.3 \% \\
+weakening & 3 & 5.1 \% \\
+call right & 2 & 3.4 \% \\
+split right & 2 & 3.4 \% \\
+vardecls right & 2 & 3.4 \% \\
+case distinction & 2 & 3.4 \% \\
+if right & 1 & 1.7 \% \\
+while exit right & 1 & 1.7 \% \\
+all right & 1 & 1.7 \% \\
+normalize & 1 & 1.7 \% \\
+invariant right & 1 & 1.7 \% \\
+insert lemma & 1 & 1.7 \% \\
+skip right & 1 & 1.7 \% \\
+exists left & 1 & 1.7 \% \\
+induction & 1 & 1.7 \% \\
+all left & 1 & 1.7 \% \\
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+decl & 2 & 66.6 \% \\
+Term-getmjsiz & 1 & 33.3 \% \\
+
+\end{supertabular}
