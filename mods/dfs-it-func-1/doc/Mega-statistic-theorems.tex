@@ -1,0 +1,134 @@
+\documentclass[a4paper]{article}
+
+\usepackage{latexsym,a4wide,logicdefs,amssymb,multicol,supertabular}
+
+\parindent0cm
+
+
+\begin{document}
+\raggedright
+              
+\bigskip
+
+{\large\bf Term-deptsearchfjsiz}
+
+\medskip
+
+ \Fol \Do deptSearchF\#\Dc true
+
+\begin{itemize}
+
+
+\item       used lemmas  : decl
+\item       used by      : Exp-02, Exp-03, Exp-04, Exp-05, Exp-06
+
+\end{itemize}
+
+\medskip
+
+\bigskip
+
+{\large\bf Exp-01}
+
+\medskip
+
+ \Fol z = [] \And a $\in$\_v g \Or a ' = [] \Imp \Do deptSearchF\#\Dc open = []
+
+\begin{itemize}
+
+
+\item       used lemmas  : decl
+
+\end{itemize}
+
+\medskip
+
+\bigskip
+
+{\large\bf Exp-02}
+
+\medskip
+
+ \Fol pathp(x, g) \And x.first = a \And x.last = b \Imp \Do deptSearchF\#\Dc open = x
+
+\begin{itemize}
+
+
+\item       used lemmas  : Term-deptsearchfjsiz
+
+\end{itemize}
+
+\medskip
+
+\bigskip
+
+{\large\bf Exp-03}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b $\in$ z \Imp \Do deptSearchF\#\Dc open.first = a
+
+\begin{itemize}
+
+
+\item       used lemmas  : Term-deptsearchfjsiz
+
+\end{itemize}
+
+\medskip
+
+\bigskip
+
+{\large\bf Exp-04}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b $\in$ z \Imp \Do deptSearchF\#\Dc open.last = b
+
+\begin{itemize}
+
+
+\item       used lemmas  : Term-deptsearchfjsiz
+
+\end{itemize}
+
+\medskip
+
+\bigskip
+
+{\large\bf Exp-05}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp \Do deptSearchF\#\Dc open.first = a
+
+\begin{itemize}
+
+
+\item       used lemmas  : Term-deptsearchfjsiz
+
+\end{itemize}
+
+\medskip
+
+\bigskip
+
+{\large\bf Exp-06}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp \Do deptSearchF\#\Dc open.last = c
+
+\begin{itemize}
+
+
+\item       used lemmas  : Term-deptsearchfjsiz
+
+\end{itemize}
+
+\medskip
+
+
+
+\end{document}
+

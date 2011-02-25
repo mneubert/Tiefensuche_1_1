@@ -1,0 +1,228 @@
+\documentclass[a4paper]{article}
+
+\usepackage{latexsym,a4wide,logicdefs,amssymb,multicol}
+
+\parindent0cm
+
+
+\begin{document}
+\raggedright
+              
+
+
+{\parindent0cm
+
+\begin{multicols}{3}
+Exp-01, \pageref{lemma-Exp-01}\\
+Exp-02, \pageref{lemma-Exp-02}\\
+Exp-03, \pageref{lemma-Exp-03}\\
+Exp-04, \pageref{lemma-Exp-04}\\
+Exp-05, \pageref{lemma-Exp-05}\\
+Exp-06, \pageref{lemma-Exp-06}\\
+Term-deptsearchfjsiz, \pageref{lemma-Term-deptsearchfjsiz}\\
+decl, \pageref{lemma-decl}\\
+
+\end{multicols}}
+
+{\LARGE\bf decl}\label{lemma-decl}
+
+\medskip
+
+deptSearchF\#(a, z, g; {\bf var} y) \\
+\{\\
+{\bf let} open = [] + a,\\
+\tab{{\bf let}} close = [],\\
+\tab{{\bf let}} \Var{n}{0} = 0,\\
+\tab{{\bf let}} vorgaenger = @g,\\
+\tab{{\bf let}} \Var{open}{2} = [],\\
+\tab{{\bf let}} start = a,\\
+\tab{{\bf let}} n = 0,\\
+\tab{{\bf let}} \Var{n}{1} = 0,\\
+\tab{{\bf let}} \Var{n}{2} = 0\\
+ {\bf in}\\
+ {\bf \{}\\
+\tabbe y := [];\\
+\tabbe \Var{n}{0} := getM(a, g);\\
+\tabbe n := \Var{n}{0};\\
+\tabbe \Var{n}{1} := \Var{n}{0};\\
+\tabbe \Var{n}{2} := \Var{n}{0};\\
+\tabbe {\bf if} \Not (a ' = [] \Or z = []) {\bf then}\\
+\tabbe \tabif\  {\bf if} a $\in$ z {\bf then} y := y + a {\bf else}\\
+\tabbe \tabif\  {\bf while} \Var{n}{0} $>$ 0 \And open $\neq$ [] {\bf do}\\
+\tabbe \tabif\ \tab{wh} {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe a := open.first;\\
+\tabbe \tabif\ \tab{wh}\tabbe \Var{n}{0} := \Var{n}{0} - 1;\\
+\tabbe \tabif\ \tab{wh}\tabbe {\bf if} a $\in$ z {\bf then}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\  {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe y := y + a;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe {\bf while} a $\neq$ start \And \Var{n}{1} $>$ 0 {\bf do}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh} {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}\tabbe y := y + set2list(outsortSuccs(a, list2set(y), vorgaenger));\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}\tabbe a := y.last;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}\tabbe \Var{n}{1} := \Var{n}{1} - 1\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}{\bf \}}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ {\bf \}}\\
+\tabbe \tabif\ \tab{wh}\tabbe  {\bf else}\\
+\tabbe \tabif\ \tab{wh}\tabbe  {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe close := a ' + close;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \Var{open}{2} := set2list(outsortSuccs(a, list2set(close), g));\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe open := \Var{open}{2} + open.rest;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe {\bf while} \Var{open}{2} $\neq$ [] \And \Var{n}{2} $>$ 0 {\bf do}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh} {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}\tabbe vorgaenger := vorgaenger +e \Var{open}{2}.first --$>$ a;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}\tabbe \Var{open}{2} := \Var{open}{2}.rest;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}\tabbe \Var{n}{2} := \Var{n}{2} - 1\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}{\bf \}}\\
+\tabbe \tabif\ \tab{wh}\tabbe {\bf \}}\\
+\tabbe \tabif\ \tab{wh}{\bf \}}\\
+{\bf \}}\\
+\}
+
+\begin{itemize}
+
+\item Type: an axiom
+
+\item       no proof exists
+\item       used by      : Term-deptsearchfjsiz, Exp-01
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Term-deptsearchfjsiz}\label{lemma-Term-deptsearchfjsiz}
+
+\medskip
+
+ \Fol \Do deptSearchF\#\Dc true
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a partial proof exists
+\item       used lemmas  : decl
+\item       used by      : Exp-02, Exp-03, Exp-04, Exp-05, Exp-06
+\item       interactions : 26
+\item       proof steps  : 39
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Exp-01}\label{lemma-Exp-01}
+
+\medskip
+
+ \Fol z = [] \And a $\in$\_v g \Or a ' = [] \Imp \Do deptSearchF\#\Dc open = []
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : decl
+\item       interactions : 2
+\item       proof steps  : 13
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Exp-02}\label{lemma-Exp-02}
+
+\medskip
+
+ \Fol pathp(x, g) \And x.first = a \And x.last = b \Imp \Do deptSearchF\#\Dc open = x
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 1
+\item       proof steps  : 2
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Exp-03}\label{lemma-Exp-03}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b $\in$ z \Imp \Do deptSearchF\#\Dc open.first = a
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 1
+\item       proof steps  : 2
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Exp-04}\label{lemma-Exp-04}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b $\in$ z \Imp \Do deptSearchF\#\Dc open.last = b
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 1
+\item       proof steps  : 2
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Exp-05}\label{lemma-Exp-05}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp \Do deptSearchF\#\Dc open.first = a
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 1
+\item       proof steps  : 2
+\end{itemize}
+
+\medskip
+
+{\LARGE\bf Exp-06}\label{lemma-Exp-06}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp \Do deptSearchF\#\Dc open.last = c
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 2
+\item       proof steps  : 3
+\end{itemize}
+
+\medskip
+
+
+
+\end{document}
+

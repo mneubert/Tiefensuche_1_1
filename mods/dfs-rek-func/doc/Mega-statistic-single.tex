@@ -1,0 +1,522 @@
+\documentclass[a4paper]{article}
+
+\usepackage{latexsym,a4wide,logicdefs,amssymb,multicol,supertabular}
+
+\parindent0cm
+
+
+\begin{document}
+\raggedright
+              
+
+
+{\parindent0cm
+
+\begin{multicols}{3}
+Exp-01, \pageref{lemma-Exp-01}\\
+Exp-02, \pageref{lemma-Exp-02}\\
+Exp-03, \pageref{lemma-Exp-03}\\
+Exp-04, \pageref{lemma-Exp-04}\\
+Exp-05, \pageref{lemma-Exp-05}\\
+Exp-06, \pageref{lemma-Exp-06}\\
+Term-deptsearchfjsiz, \pageref{lemma-Term-deptsearchfjsiz}\\
+Term-deptsearchfjsiz-01, \pageref{lemma-Term-deptsearchfjsiz-01}\\
+decl-01, \pageref{lemma-decl-01}\\
+decl-03, \pageref{lemma-decl-03}\\
+
+\end{multicols}}
+
+\pagebreak
+
+{\LARGE\bf decl-01}\label{lemma-decl-01}
+
+\medskip
+
+deptSearchF\#(a, z, g; {\bf var} y) \\
+\{\\
+{\bf let} path = [], n = 0, \Var{n}{0} = 0 {\bf in}\\
+{\bf \{}\\
+\tabbe n := getM(a, g);\\
+\tabbe \Var{n}{0} := n;\\
+\tabbe deptSearchProcF\#;\\
+\tabbe y := path\\
+{\bf \}}\\
+\}
+
+\begin{itemize}
+
+\item Type: an axiom
+
+\item       no proof exists
+\item       used by      : Term-deptsearchfjsiz
+\end{itemize}
+
+\medskip
+
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+
+\end{supertabular}
+\pagebreak
+
+{\LARGE\bf decl-03}\label{lemma-decl-03}
+
+\medskip
+
+deptSearchProcF\#(a, close, z, y, g, n; {\bf var} path, \Var{n}{0}) \\
+\{\\
+path := [];\\
+ \Var{n}{0} := n;\\
+ {\bf let} open = a ' {\bf in}\\
+ {\bf if} \Not (open = [] \Or z = [] \Or n = 0) {\bf then}\\
+ \tabif\  {\bf \{}\\
+ \tabif\ \tabbe y := y + a ';\\
+ \tabif\ \tabbe {\bf if} a $\in$ z {\bf then} path := y {\bf else}\\
+ \tabif\ \tabbe  {\bf \{}\\
+ \tabif\ \tabbe \tabbe close := a ' + close;\\
+ \tabif\ \tabbe \tabbe open := set2list(outsortSuccs(a, list2set(close), g)) + open.rest;\\
+ \tabif\ \tabbe \tabbe n := n - 1;\\
+ \tabif\ \tabbe \tabbe \Var{n}{0} := n;\\
+ \tabif\ \tabbe \tabbe {\bf while} \Not (n = 0 \Or open = [] \Or path $\neq$ []) {\bf do}\\
+ \tabif\ \tabbe \tabbe \tab{wh} {\bf \{}\\
+ \tabif\ \tabbe \tabbe \tab{wh}\tabbe deptSearchProcF\#;\\
+ \tabif\ \tabbe \tabbe \tab{wh}\tabbe n := \Var{n}{0};\\
+ \tabif\ \tabbe \tabbe \tab{wh}\tabbe open := open.rest\\
+ \tabif\ \tabbe \tabbe \tab{wh}{\bf \}}\\
+ \tabif\ \tabbe {\bf \}}\\
+ \tabif\ {\bf \}}\\
+\}
+
+\begin{itemize}
+
+\item Type: an axiom
+
+\item       no proof exists
+\item       used by      : Term-deptsearchfjsiz-01
+\end{itemize}
+
+\medskip
+
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+
+\end{supertabular}
+\pagebreak
+
+{\LARGE\bf Term-deptsearchfjsiz}\label{lemma-Term-deptsearchfjsiz}
+
+\medskip
+
+ \Fol \Do deptSearchF\#\Dc true
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz-01, decl-01
+\item       used by      : Exp-01, Exp-02, Exp-03, Exp-04, Exp-05, Exp-06
+\item       interactions : 5
+\item       proof steps  : 5
+\end{itemize}
+
+\medskip
+
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+Interactive & 5 & 100.0 \% \\
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+assign right & 2 & 40.0 \% \\
+call right & 1 & 20.0 \% \\
+insert lemma & 1 & 20.0 \% \\
+vardecls right & 1 & 20.0 \% \\
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchfjsiz-01 & 1 & 50.0 \% \\
+decl-01 & 1 & 50.0 \% \\
+
+\end{supertabular}
+\pagebreak
+
+{\LARGE\bf Exp-01}\label{lemma-Exp-01}
+
+\medskip
+
+ \Fol z = [] \And a $\in$\_v g \Or a ' = [] \Imp \Do deptSearchF\#\Dc open = []
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 1
+\item       proof steps  : 3
+\end{itemize}
+
+\medskip
+
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+System & 1 & 33.3 \% \\
+Interactive & 1 & 33.3 \% \\
+simplifier & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+normalize & 1 & 33.3 \% \\
+insert lemma & 1 & 33.3 \% \\
+simplifier & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchfjsiz & 1 & 100.0 \% \\
+
+\end{supertabular}
+\pagebreak
+
+{\LARGE\bf Exp-02}\label{lemma-Exp-02}
+
+\medskip
+
+ \Fol pathp(x, g) \And x.first = a \And x.last = b \Imp \Do deptSearchF\#\Dc open = x
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 2
+\item       proof steps  : 3
+\end{itemize}
+
+\medskip
+
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+Interactive & 2 & 66.6 \% \\
+System & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+normalize & 1 & 33.3 \% \\
+insert lemma & 1 & 33.3 \% \\
+simplifier & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchfjsiz & 1 & 100.0 \% \\
+
+\end{supertabular}
+\pagebreak
+
+{\LARGE\bf Exp-03}\label{lemma-Exp-03}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b $\in$ z \Imp \Do deptSearchF\#\Dc open.first = a
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 2
+\item       proof steps  : 3
+\end{itemize}
+
+\medskip
+
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+Interactive & 2 & 66.6 \% \\
+System & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+normalize & 1 & 33.3 \% \\
+insert lemma & 1 & 33.3 \% \\
+simplifier & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchfjsiz & 1 & 100.0 \% \\
+
+\end{supertabular}
+\pagebreak
+
+{\LARGE\bf Exp-04}\label{lemma-Exp-04}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b $\in$ z \Imp \Do deptSearchF\#\Dc open.last = b
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 2
+\item       proof steps  : 3
+\end{itemize}
+
+\medskip
+
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+Interactive & 2 & 66.6 \% \\
+System & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+normalize & 1 & 33.3 \% \\
+insert lemma & 1 & 33.3 \% \\
+simplifier & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchfjsiz & 1 & 100.0 \% \\
+
+\end{supertabular}
+\pagebreak
+
+{\LARGE\bf Exp-05}\label{lemma-Exp-05}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp \Do deptSearchF\#\Dc open.first = a
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 2
+\item       proof steps  : 3
+\end{itemize}
+
+\medskip
+
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+Interactive & 2 & 66.6 \% \\
+System & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+normalize & 1 & 33.3 \% \\
+insert lemma & 1 & 33.3 \% \\
+simplifier & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchfjsiz & 1 & 100.0 \% \\
+
+\end{supertabular}
+\pagebreak
+
+{\LARGE\bf Exp-06}\label{lemma-Exp-06}
+
+\medskip
+
+ \Fol a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp \Do deptSearchF\#\Dc open.last = c
+
+\begin{itemize}
+
+\item Type: a proof obligation
+
+\item       must be proved
+\item       a complete proof exists
+\item       used lemmas  : Term-deptsearchfjsiz
+\item       interactions : 2
+\item       proof steps  : 3
+\end{itemize}
+
+\medskip
+
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+Interactive & 2 & 66.6 \% \\
+System & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+normalize & 1 & 33.3 \% \\
+insert lemma & 1 & 33.3 \% \\
+simplifier & 1 & 33.3 \% \\
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchfjsiz & 1 & 100.0 \% \\
+
+\end{supertabular}
+\pagebreak
+
+{\LARGE\bf Term-deptsearchfjsiz-01}\label{lemma-Term-deptsearchfjsiz-01}
+
+\medskip
+
+ \Fol \Do deptSearchProcF\#\Dc \Do y := \Var{x}{0}\Dc true
+
+\begin{itemize}
+
+\item Type: created by user
+
+\item       a partial proof exists
+\item       used lemmas  : decl-03
+\item       used by      : Term-deptsearchfjsiz
+\item       interactions : 23
+\item       proof steps  : 24
+\end{itemize}
+
+\medskip
+
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+
+\end{supertabular}
+
+
+\end{document}
+
