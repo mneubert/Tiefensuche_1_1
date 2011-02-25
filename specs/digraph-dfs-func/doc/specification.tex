@@ -1,0 +1,26 @@
+\begin{tabbing}\label{digraph-dfs-func-spec}%
+digraph-dfs-func = \\
+{\bf enr}\={\bf ich} union\_bool\_graph {\bf with}\+\\
+{\bf functions} deptSearchF  : elem $\times$ list $\times$ digraph \Imp  list ;
+\end{tabbing}
+{\bf axioms}
+
+
+
+\begin{quote}
+z = [] \And a $\in$\_v g \Or a ' = [] \Imp deptSearchF(a, z, g) = [];
+
+pathp(x, g) \And x.first = a \And x.last = b \Imp deptSearchF(a, b ', g) = x;
+
+a --$>$ b $\in$\_e g \And b $\in$ z \Imp deptSearchF(a, z, g).first = a;
+
+a --$>$ b $\in$\_e g \And b $\in$ z \Imp deptSearchF(a, z, g).last = b;
+
+a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp deptSearchF(a, z, g).first = a;
+
+a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp deptSearchF(a, z, g).last = c;
+
+
+\end{quote}
+{\bf end enrich}
+

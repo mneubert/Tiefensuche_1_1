@@ -1,0 +1,138 @@
+\begin{tabbing}\label{dfs-it-func-1-module}%
+dfs-it-func-1 = \\
+{\bf mod}\={\bf ule}\+\\
+{\bf export} digraph-dfs-func\\
+{\bf ref}\={\bf inement}\+\\
+{\bf rep}\= {\bf resentation of operations}\+\\
+\begin{tabular}{lcl}
+deptSearchF\# & implements & deptSearchF;
+\end{tabular}\-\\
+
+\\
+{\bf implementation}\\
+{\bf import} digraph-path\\
+\\
+{\bf vari}\={\bf ables}\+\\
+open, close, path, \Var{open}{2}: list;\\
+vorgaenger: digraph;\\
+start: elem;\\
+\Var{n}{1}, \Var{n}{2}: nat;
+\-\\
+\\
+
+               {\bf declaration}
+\end{tabbing}
+
+{\parindent1cm 
+deptSearchF\#(a, z, g; {\bf var} y) \\
+{\bf \{}\\
+{\bf var} open = [] + a,\\
+\tab{{\bf var}} close = [],\\
+\tab{{\bf var}} \Var{n}{0} = 0,\\
+\tab{{\bf var}} vorgaenger = @g,\\
+\tab{{\bf var}} \Var{open}{2} = [],\\
+\tab{{\bf var}} start = a,\\
+\tab{{\bf var}} n = 0,\\
+\tab{{\bf var}} \Var{n}{1} = 0,\\
+\tab{{\bf var}} \Var{n}{2} = 0\\
+ {\bf in}\\
+ {\bf \{}\\
+\tabbe y := [];\\
+\tabbe \Var{n}{0} := getM(a, g);\\
+\tabbe n := \Var{n}{0};\\
+\tabbe \Var{n}{1} := \Var{n}{0};\\
+\tabbe \Var{n}{2} := \Var{n}{0};\\
+\tabbe {\bf if} \Not (a ' = [] \Or z = []) {\bf then}\\
+\tabbe \tabif\  {\bf if} a $\in$ z {\bf then} y := y + a {\bf else}\\
+\tabbe \tabif\  {\bf while} \Var{n}{0} $>$ 0 \And open $\neq$ [] {\bf do}\\
+\tabbe \tabif\ \tab{wh} {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe a := open.first;\\
+\tabbe \tabif\ \tab{wh}\tabbe \Var{n}{0} := \Var{n}{0} - 1;\\
+\tabbe \tabif\ \tab{wh}\tabbe {\bf if} a $\in$ z {\bf then}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\  {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe y := y + a;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe {\bf while} a $\neq$ start \And \Var{n}{1} $>$ 0 {\bf do}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh} {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}\tabbe y := y + set2list(outsortSuccs(a, list2set(y), vorgaenger));\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}\tabbe a := y.last;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}\tabbe \Var{n}{1} := \Var{n}{1} - 1\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}{\bf \}}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ {\bf \}}\\
+\tabbe \tabif\ \tab{wh}\tabbe  {\bf else}\\
+\tabbe \tabif\ \tab{wh}\tabbe  {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe close := a ' + close;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \Var{open}{2} := set2list(outsortSuccs(a, list2set(close), g));\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe open := \Var{open}{2} + open.rest;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe {\bf while} \Var{open}{2} $\neq$ [] \And \Var{n}{2} $>$ 0 {\bf do}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh} {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}\tabbe vorgaenger := vorgaenger +e \Var{open}{2}.first --$>$ a;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}\tabbe \Var{open}{2} := \Var{open}{2}.rest;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}\tabbe \Var{n}{2} := \Var{n}{2} - 1\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}{\bf \}}\\
+\tabbe \tabif\ \tab{wh}\tabbe {\bf \}}\\
+\tabbe \tabif\ \tab{wh}{\bf \}}\\
+{\bf \}}\\
+{\bf \}}
+}
+
+
+
+\bigskip
+
+{\bf uniform restriction declarations:}
+
+deptSearchF\#(a, z, g; {\bf var} y) \\
+\{\\
+{\bf let} open = [] + a,\\
+\tab{{\bf let}} close = [],\\
+\tab{{\bf let}} \Var{n}{0} = 0,\\
+\tab{{\bf let}} vorgaenger = @g,\\
+\tab{{\bf let}} \Var{open}{2} = [],\\
+\tab{{\bf let}} start = a,\\
+\tab{{\bf let}} n = 0,\\
+\tab{{\bf let}} \Var{n}{1} = 0,\\
+\tab{{\bf let}} \Var{n}{2} = 0\\
+ {\bf in}\\
+ {\bf \{}\\
+\tabbe y := [];\\
+\tabbe \Var{n}{0} := getM(a, g);\\
+\tabbe n := \Var{n}{0};\\
+\tabbe \Var{n}{1} := \Var{n}{0};\\
+\tabbe \Var{n}{2} := \Var{n}{0};\\
+\tabbe {\bf if} \Not (a ' = [] \Or z = []) {\bf then}\\
+\tabbe \tabif\  {\bf if} a $\in$ z {\bf then} y := y + a {\bf else}\\
+\tabbe \tabif\  {\bf while} \Var{n}{0} $>$ 0 \And open $\neq$ [] {\bf do}\\
+\tabbe \tabif\ \tab{wh} {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe a := open.first;\\
+\tabbe \tabif\ \tab{wh}\tabbe \Var{n}{0} := \Var{n}{0} - 1;\\
+\tabbe \tabif\ \tab{wh}\tabbe {\bf if} a $\in$ z {\bf then}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\  {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe y := y + a;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe {\bf while} a $\neq$ start \And \Var{n}{1} $>$ 0 {\bf do}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh} {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}\tabbe y := y + set2list(outsortSuccs(a, list2set(y), vorgaenger));\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}\tabbe a := y.last;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}\tabbe \Var{n}{1} := \Var{n}{1} - 1\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ \tabbe \tab{wh}{\bf \}}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabif\ {\bf \}}\\
+\tabbe \tabif\ \tab{wh}\tabbe  {\bf else}\\
+\tabbe \tabif\ \tab{wh}\tabbe  {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe close := a ' + close;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \Var{open}{2} := set2list(outsortSuccs(a, list2set(close), g));\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe open := \Var{open}{2} + open.rest;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe {\bf while} \Var{open}{2} $\neq$ [] \And \Var{n}{2} $>$ 0 {\bf do}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh} {\bf \{}\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}\tabbe vorgaenger := vorgaenger +e \Var{open}{2}.first --$>$ a;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}\tabbe \Var{open}{2} := \Var{open}{2}.rest;\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}\tabbe \Var{n}{2} := \Var{n}{2} - 1\\
+\tabbe \tabif\ \tab{wh}\tabbe \tabbe \tab{wh}{\bf \}}\\
+\tabbe \tabif\ \tab{wh}\tabbe {\bf \}}\\
+\tabbe \tabif\ \tab{wh}{\bf \}}\\
+{\bf \}}\\
+\}
+
+\bigskip
+
+
+
+\par\mbox{}\hrulefill\mbox{}\par

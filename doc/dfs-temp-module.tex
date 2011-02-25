@@ -1,0 +1,58 @@
+\begin{tabbing}\label{dfs-temp-module}%
+dfs-temp = \\
+{\bf mod}\={\bf ule}\+\\
+{\bf export} digraph-path\\
+{\bf ref}\={\bf inement}\+\\
+{\bf rep}\= {\bf resentation of operations}\+\\
+\begin{tabular}{lcl}
+getM\# & implements & getM;
+\end{tabular}\-\\
+
+\\
+{\bf implementation}\\
+{\bf import} union\_bool\_graph\\
+\\
+{\bf vari}\={\bf ables}\+\\
+\Var{s}{20}: set;\\
+\Var{b}{99}: elem;
+\-\\
+\\
+
+               {\bf declaration}
+\end{tabbing}
+
+{\parindent1cm 
+getM\#(a, g; {\bf var} n) \\
+{\bf \{}\\
+{\bf var} \Var{s}{20} = $\emptyset$, \Var{b}{99} = a {\bf in}\\
+{\bf \{}\\
+\tabbe n := 0;\\
+\tabbe \Var{s}{20} := g.vs;\\
+\tabbe {\bf while} \Var{s}{20} $\neq$ $\emptyset$ {\bf do}\\
+\tabbe \tab{wh} {\bf \{} \Var{b}{99} := \Var{s}{20}.max; \Var{s}{20} := \Var{s}{20}.butmax; {\bf if} path$\exists$(a, \Var{b}{99}, g) {\bf then} n := n + 1{\bf \}}\\
+{\bf \}}\\
+{\bf \}}
+}
+
+
+
+\bigskip
+
+{\bf uniform restriction declarations:}
+
+getM\#(a, g; {\bf var} n) \\
+\{\\
+{\bf let} \Var{s}{20} = $\emptyset$, \Var{b}{99} = a {\bf in}\\
+{\bf \{}\\
+\tabbe n := 0;\\
+\tabbe \Var{s}{20} := g.vs;\\
+\tabbe {\bf while} \Var{s}{20} $\neq$ $\emptyset$ {\bf do}\\
+\tabbe \tab{wh} \{\Var{b}{99} := \Var{s}{20}.max; \Var{s}{20} := \Var{s}{20}.butmax; {\bf if} path$\exists$(a, \Var{b}{99}, g) {\bf then} n := n + 1\}\\
+{\bf \}}\\
+\}
+
+\bigskip
+
+
+
+\par\mbox{}\hrulefill\mbox{}\par

@@ -1,0 +1,60 @@
+\subsection{Spezifikation "`digraph-dfs-func"'}
+
+Im Gegensatz zu den vorangegangenen Kapiteln, bei dem die Tiefensuche als
+Prozedur spezifiziert und implementiert wurde, wird nun der Algorithmus als
+Funktion umgesetzt. Das heißt, dass sowohl die iterative als auch die rekursive
+Variante einen Rückgabeparameter besitzen, der einen Pfad vom Startknoten a
+in die Zielknotenmenge z enthält, wenn dieser im Graphen G existiert.
+Andernfalls wird die leere Liste zurückgegeben.
+\par
+Der folgende Absatz zeigt die Signatur der Spezifikation:
+
+\begin{tabbing}\label{digraph-dfs-func-spec}%
+digraph-dfs-func = \\
+{\bf enr}\={\bf ich} union\_bool\_graph {\bf with}\+\\
+{\bf functions} deptSearchF  : elem $\times$ list $\times$ digraph \Imp  list ;
+\end{tabbing}
+{\bf axioms}
+
+
+
+\begin{quote}
+z = [] \And a $\in$\_v g \Or a ' = [] \Imp deptSearchF(a, z, g) = [];
+
+pathp(x, g) \And x.first = a \And x.last = b \Imp deptSearchF(a, b ', g) = x;
+
+a --$>$ b $\in$\_e g \And b $\in$ z \Imp deptSearchF(a, z, g).first = a;
+
+a --$>$ b $\in$\_e g \And b $\in$ z \Imp deptSearchF(a, z, g).last = b;
+
+a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp deptSearchF(a, z, g).first = a;
+
+a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp deptSearchF(a, z, g).last = c;
+
+
+\end{quote}
+{\bf end enrich}
+
+Die Spezifikation erweitert die Spezifikation \emph{union\_bool\_graph}, welche
+in Kapitel \ref{} erläutert wird. Innerhalb von \emph{digraph-dfs-func} wird die
+Funktion \emph{deptSearchF} beschrieben, welche eine Abbildung von \emph{elem
+$\times$ list $\times$ digraph $\rightarrow$ list} ist. Die definierten Axiome
+werden im Folgenden entsprechend der obigen Ordnung erklärt:
+
+\begin{itemize}
+  \item Das erste Axiom besagt, dass wenn der Funktion entweder keine
+  Zielknotenmenge oder kein Startelement übergeben wird, diese einen leeren Pfad
+  zurückgibt, sprich die leere Liste.
+  \item Das zweite Axiom stellt den Fall dar, dass es im Graphen eine Kante
+  gibt, deren Startknoten a und deren Endknoten b ist. Wird die Funktion in der
+  Form aufgerufen, dass a der Startknoten und b der Zielknoten ist, so ist der
+  Rückgabepfad die Kante x.
+  \item Axiom drei und vier erfüllen dieselben Voraussetzungen wie zwei, mit dem
+  Unterschied, dass die Aussage von Axiom 3 ist, dass der Start des
+  Rückgabepfades a ist und in Axiom vier das Ende Pfades Knoten b.
+  \item Axiom fünf bildet die Transitivität ab, wobei gesagt wird, dass wenn
+  eine Kante von a nach b und von b nach c existiert, wobei c Zielknoten ist, der
+  Knoten a das erste Element auf dem Rückgabepfad ist.
+  \item Analog zu Axiom fünf, ist die Aussage das auf dem transitiven Pfad das
+  letzte Element der Zielknoten c ist.
+\end{itemize}

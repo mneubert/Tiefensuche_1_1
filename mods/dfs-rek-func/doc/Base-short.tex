@@ -1,0 +1,164 @@
+\documentclass[a4paper]{article}
+
+\usepackage{latexsym,a4wide,logicdefs,amssymb}
+
+\parindent0cm
+
+
+\begin{document}
+\raggedright
+              
+decl-01: 
+\begin{tabbing}
+deptSearchF\#(a, z, g; {\bf var} y)\\
+{\bf be}\= {\bf gin}\+ \\ 
+
+
+{\bf var} path = [], n = 0, \Var{n}{0} = 0 {\bf in} \\ 
+n := getM(a, g); \\ 
+ \Var{n}{0} := n; \\ 
+ deptSearchProcF\#(a, [], z, [], g, n; path, \Var{n}{0}); \\ 
+ y := path \- \\ 
+ {\bf \}} 
+\end{tabbing}
+
+used by: (Term-deptsearchfjsiz)\\
+Proof steps: 0, interactions: 0
+
+\medskip
+
+decl-03: 
+\begin{tabbing}
+deptSearchProcF\#(a, close, z, y, g, n; {\bf var} path, \Var{n}{0})\\
+{\bf be}\= {\bf gin}\+ \\ 
+path := []; \\ 
+ \Var{n}{0} := n; \\ 
+ 
+
+{\bf var} open = a ' {\bf in} \\ 
+
+{\bf if}\=\ \Not (open = [] \Or z = [] \Or n = 0) {\bf then} \+\\ 
+ {\bf be}\= {\bf gin} \+ \\ 
+ y := y + a '; \\ 
+ 
+{\bf if}\=\ a $\in$ z {\bf then} path := y {\bf else} \+\\ 
+ {\bf be}\= {\bf gin} \+ \\ 
+ close := a ' + close; \\ 
+ open := set2list(outsortSuccs(a, list2set(close), g)) + open.rest; \\ 
+ n := n - 1; \\ 
+ \Var{n}{0} := n; \\ 
+ {\bf wh}\={\bf ile} \Not (n = 0 \Or open = [] \Or path $\neq$ []) {\bf do} \+\\ 
+{\bf be}\= {\bf gin} \+ \\ 
+ deptSearchProcF\#(open.first, close, z, y, g, n; path, \Var{n}{0}); \\ 
+ n := \Var{n}{0}; \\ 
+ open := open.rest \- \\ 
+ {\bf \}}\- \- \\ 
+ {\bf \}}\- \- \\ 
+ {\bf \}} \- \- \\ 
+ {\bf \}} 
+\end{tabbing}
+
+used by: (Term-deptsearchfjsiz-01)\\
+Proof steps: 0, interactions: 0
+
+\medskip
+
+Term-deptsearchfjsiz: 
+ \Fol \Do deptSearchF\#\Dc\ true
+
+
+uses: (Term-deptsearchfjsiz-01 decl-01)\\
+used by: (Exp-01 Exp-02 Exp-03 Exp-04 Exp-05 Exp-06)\\
+Proof steps: 5, interactions: 5
+
+\medskip
+
+Exp-01: 
+ \Fol z = [] \And a $\in$\_v g \Or a ' = [] \Imp \Do deptSearchF\#\Dc open = []
+
+
+uses: (Term-deptsearchfjsiz)\\
+Proof steps: 3, interactions: 1
+
+\medskip
+
+Exp-02: 
+\begin{flushleft}
+
+
+\Fol
+
+pathp(x, g) \And x.first = a \And x.last = b \Imp \Do deptSearchF\#\Dc open = x
+
+\end{flushleft}
+
+
+uses: (Term-deptsearchfjsiz)\\
+Proof steps: 3, interactions: 2
+
+\medskip
+
+Exp-03: 
+ \Fol a --$>$ b $\in$\_e g \And b $\in$ z \Imp \Do deptSearchF\#\Dc open.first = a
+
+
+uses: (Term-deptsearchfjsiz)\\
+Proof steps: 3, interactions: 2
+
+\medskip
+
+Exp-04: 
+ \Fol a --$>$ b $\in$\_e g \And b $\in$ z \Imp \Do deptSearchF\#\Dc open.last = b
+
+
+uses: (Term-deptsearchfjsiz)\\
+Proof steps: 3, interactions: 2
+
+\medskip
+
+Exp-05: 
+\begin{flushleft}
+
+
+\Fol
+
+a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp \Do deptSearchF\#\Dc open.first = a
+
+\end{flushleft}
+
+
+uses: (Term-deptsearchfjsiz)\\
+Proof steps: 3, interactions: 2
+
+\medskip
+
+Exp-06: 
+\begin{flushleft}
+
+
+\Fol
+
+a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp \Do deptSearchF\#\Dc open.last = c
+
+\end{flushleft}
+
+
+uses: (Term-deptsearchfjsiz)\\
+Proof steps: 3, interactions: 2
+
+\medskip
+
+Term-deptsearchfjsiz-01: 
+ \Fol \Do deptSearchProcF\#\Dc\ \Do y := \Var{x}{0}\Dc\ true
+
+
+uses: (decl-03)\\
+used by: (Term-deptsearchfjsiz)\\
+Proof steps: 24, interactions: 23
+
+\medskip
+
+
+
+\end{document}
+

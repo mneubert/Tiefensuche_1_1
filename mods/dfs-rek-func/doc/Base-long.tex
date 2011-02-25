@@ -1,24 +1,30 @@
-\subsection{Modul "`dfs-rek-func"'}
+\documentclass[a4paper]{article}
 
-Das Modul \emph{dfs-rek-func} beinhaltet die rekursive Implementierung der
-Tiefensuchefunktion. Dabei setzt sich das Programm aus einer Startmethode und
-der eigentlichen rekursiven Funktion zusammen. Zunächst wird (analog zur
-Prozedur - siehe Kapitel \ref{}) in der Startmethode die Anzahl der
-erreichbaren Knoten durch die Hilfsfunktion \emph{getM( . , . )} errechnet.
-Anschließend kommt es zur eigentlichen Ausführung der rekursiven Funktion. Nach
-den Initialisierungen und den Tests der übergebenen Parameter auf Korrektheit
-(alle Variablen belegt, keine Null-Werte), wird in jedem Durchlauf für den
-aktuell betrachteten Knoten, der Graph expandiert und die neu gefundenen Knoten
-einzeln weiterverfolgt. Besonderheit bei dieser Variante als Funktion ist, dass
-mittels einer Schleife ein Backtracking realisiert wird, welches die
-Exploration des Graphen auf einfache Weise ermöglicht. Dabei wird die
-Gegebenheit ausgenutzt, dass durch das rekursive Verhalten, korrekte Teilstücke
-des bereits gefundenen Weges stets wiederverwendet werden können und bei
-Verzweigungen innerhalb der Schleife alle Wege durchprobiert werden.
-\par
-Die genaue Deklaration zeigt folgender Absatz, der außerdem die
-Axiome und ihre Abhängigkeiten auflistet:
+\usepackage{latexsym,a4wide,logicdefs,amssymb,multicol}
 
+\parindent0cm
+
+
+\begin{document}
+\raggedright
+              
+
+
+{\parindent0cm
+
+\begin{multicols}{3}
+Exp-01, \pageref{lemma-Exp-01}\\
+Exp-02, \pageref{lemma-Exp-02}\\
+Exp-03, \pageref{lemma-Exp-03}\\
+Exp-04, \pageref{lemma-Exp-04}\\
+Exp-05, \pageref{lemma-Exp-05}\\
+Exp-06, \pageref{lemma-Exp-06}\\
+Term-deptsearchfjsiz, \pageref{lemma-Term-deptsearchfjsiz}\\
+Term-deptsearchfjsiz-01, \pageref{lemma-Term-deptsearchfjsiz-01}\\
+decl-01, \pageref{lemma-decl-01}\\
+decl-03, \pageref{lemma-decl-03}\\
+
+\end{multicols}}
 
 {\LARGE\bf decl-01}\label{lemma-decl-01}
 
@@ -237,65 +243,6 @@ path := [];\\
 \medskip
 
 
-In diesem Fall konnten bis auf einen Teil des Terminationsbeweises alle Axiome
-bewiesen werden. Die einzelnen Statistiken zu den Beweisschritten werden
-nachfolgend aufgelistet:
 
-Statistic for each theorem:
-
-\begin{supertabular}{l|r|r|r|r}
-	& proof steps & interactions & automation & induction\\ \hline
-Term-deptsearchfjsiz-01 & 24 & 23 & 4.1 \% & ---\\
-Term-deptsearchfjsiz & 5 & 5 & 0.0 \% & ---\\
-Exp-06 & 3 & 2 & 33.3 \% & ---\\
-Exp-01 & 3 & 1 & 66.6 \% & ---\\
-Exp-05 & 3 & 2 & 33.3 \% & ---\\
-Exp-02 & 3 & 2 & 33.3 \% & ---\\
-Exp-04 & 3 & 2 & 33.3 \% & ---\\
-Exp-03 & 3 & 2 & 33.3 \% & ---\\
-
-\end{supertabular}
-
-Heuristic applications:
-
-\begin{supertabular}{l|r|r}
-heuristic	& total applications & percentage \\ \hline
-Interactive & 16 & 69.5 \% \\
-System & 6 & 26.0 \% \\
-simplifier & 1 & 4.3 \% \\
-
-\end{supertabular}
-
-Rule applications:
-
-\begin{supertabular}{l|r|r}
-rule	        & total applications & percentage \\ \hline
-insert lemma & 7 & 30.4 \% \\
-normalize & 6 & 26.0 \% \\
-simplifier & 6 & 26.0 \% \\
-assign right & 2 & 8.6 \% \\
-vardecls right & 1 & 4.3 \% \\
-call right & 1 & 4.3 \% \\
-
-\end{supertabular}
-
-Lemma applications:
-
-\begin{supertabular}{l|r|r}
-theorem	        & total applications & percentage \\ \hline
-Term-deptsearchfjsiz & 6 & 75.0 \% \\
-decl-01 & 1 & 12.5 \% \\
-Term-deptsearchfjsiz-01 & 1 & 12.5 \% \\
-
-\end{supertabular}
-
-
-
-
-
-
-
-
-
-
+\end{document}
 

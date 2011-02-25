@@ -25,6 +25,6 @@ axioms
 
 	a --> b ²_e g ¸ b --> c ²_e g ¸ c ² z ­ deptSearchF(a , z , g ) .first = a ;
 
-	a --> b ²_e g ¸ b --> c ²_e g ¸ c ² z ­ deptSearchF(a , z , g ) .last = b;
+	a --> b ²_e g ¸ b --> c ²_e g ¸ c ² z ­ deptSearchF(a , z , g ) .last = c;
 
 end enrich

@@ -1,0 +1,221 @@
+\documentclass[a4paper]{article}
+
+\usepackage{latexsym,a4wide,logicdefs,amssymb}
+
+\parindent0cm
+
+
+\begin{document}
+\raggedright
+              
+
+
+
+\begin{center}
+\LARGE
+
+\rule{1\textwidth}{3mm}
+
+\vspace{2cm}
+
+
+\sc dfs-rek-func \\
+
+\vspace{2cm}
+
+
+\rule{1\textwidth}{3mm}
+
+\vspace{3cm}
+\rm
+
+\begin{flushleft}
+ Lemma:  \hspace{1cm}\bf Term-deptsearchfjsiz \rm\\
+
+\end{flushleft}
+\normalsize
+
+\vspace{3cm}
+
+ \Fol \Do deptSearchF\#\Dc true
+                                       
+
+\vspace{3cm}
+\rule{1\textwidth}{1mm}
+\end{center}
+
+\newpage
+
+\rule{1\textwidth}{1ex}
+{\bf The goal to prove is:}
+ \Fol \Do deptSearchF\#\Dc true
+
+
+Some statistics:
+
+\begin{itemize}
+\item the tree has 5 nodes
+\item there were 5 user-interactions
+\item automation: 0.0 \%
+\item 2 lemmas were used
+\item There remain no first-order verification conditions
+\item There remain no other goals
+\end{itemize}
+
+
+The following lemmas were used:
+ \Fol \Do deptSearchProcF\#\Dc \Do y := \Var{x}{0}\Dc true
+
+\vspace{-1.5ex}\_\hrulefill \_
+
+ \Fol 
+
+
+
+\rule{1\textwidth}{1ex}
+
+
+
+\rule{1\textwidth}{1ex}
+
+
+The following simplifier rules were used:
+
+
+\rule{1\textwidth}{1ex}
+
+
+Working on the {\bf first} goal.\\
+{\bf Interactive:} Applied {\bf call right} 1 on the following goal 
+ \Fol \Do deptSearchF\#\Dc\ true
+
+
+
+{\bf and got the following new goals:}
+
+\_\hrulefill \_
+
+ \Fol 
+
+\_\hrulefill \_
+
+\begin{flushleft}
+
+
+\Fol
+
+
+\begin{tabbing}
+\Do\= \+
+
+{\bf let} path = [], n = 0, \Var{n}{0} = 0 {\bf in} \\ 
+n := getM(a, g); \\ 
+ \Var{n}{0} := n; \\ 
+ deptSearchProcF\#; \\ 
+ y := path\Dc\-
+true
+\end{tabbing}
+
+
+\end{flushleft}
+
+
+
+\rule{1\textwidth}{1ex}
+
+
+Working on the {\bf second} goal.\\
+{\bf Interactive:} Applied {\bf vardecls right} 1 on the following goal 
+\begin{flushleft}
+
+
+\Fol
+
+
+\begin{tabbing}
+\Do\= \+
+
+{\bf let} path = [], n = 0, \Var{n}{0} = 0 {\bf in} \\ 
+n := getM(a, g); \\ 
+ \Var{n}{0} := n; \\ 
+ deptSearchProcF\#; \\ 
+ y := path\Dc\-
+true
+\end{tabbing}
+
+
+\end{flushleft}
+
+
+
+{\bf and got the following new goal:}
+
+\_\hrulefill \_
+
+\begin{flushleft}
+\Var{n}{1} = 0, 
+\Var{n}{2} = 0, 
+\Var{x}{0} = []
+
+
+\Fol
+
+\Do \Var{n}{2} := getM(a, g)\Dc\ \Do \Var{n}{1} := \Var{n}{2}; \\ 
+ deptSearchProcF\#; \\ 
+ y := \Var{x}{0}\Dc\ true
+
+\end{flushleft}
+
+
+
+\rule{1\textwidth}{1ex}
+
+
+Working on the {\bf second} goal.\\
+{\bf Interactive:} Applied {\bf assign right} 1 on the goal 
+
+{\bf and got the following new goal:}
+
+\_\hrulefill \_
+
+\begin{flushleft}
+\Var{n}{1} = 0, 
+\Var{n}{2} = 0, 
+\Var{x}{0} = []
+
+
+\Fol
+
+\Do \Var{n}{1} := getM(a, g)\Dc\ \Do deptSearchProcF\#; \\ 
+ y := \Var{x}{0}\Dc\ true
+
+\end{flushleft}
+
+
+
+\rule{1\textwidth}{1ex}
+
+
+Working on the {\bf second} goal.\\
+{\bf Interactive:} Applied {\bf assign right} 1 on the goal 
+
+{\bf and got the following new goal:}
+
+\_\hrulefill \_
+
+\begin{flushleft}
+\Var{n}{1} = 0, 
+\Var{n}{2} = 0, 
+\Var{x}{0} = []
+
+
+\Fol
+
+\Do deptSearchProcF\#\Dc\ \Do y := \Var{x}{0}\Dc\ true
+
+\end{flushleft}
+
+
+
+\rule{1\textwidth}{1ex}
+

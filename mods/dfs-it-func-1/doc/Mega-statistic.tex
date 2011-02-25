@@ -1,0 +1,82 @@
+\documentclass[a4paper]{article}
+
+\usepackage{latexsym,a4wide,logicdefs,amssymb,supertabular}
+
+\parindent0cm
+
+
+\begin{document}
+\raggedright
+              
+\begin{itemize}
+\item Proof obligations: 7
+\item Axioms: 1
+\item Theorems: 0
+\item Proof steps: 63
+\item Interactions: 34
+\item Automation: 46.0 \%
+\item Not proved: 1
+\end{itemize}
+
+
+Statistic for each theorem:
+
+\begin{supertabular}{l|r|r|r|r}
+	& proof steps & interactions & automation & induction\\ \hline
+Term-deptsearchfjsiz & 39 & 26 & 33.3 \% & 2\\
+Exp-01 & 13 & 2 & 84.6 \% & ---\\
+Exp-06 & 3 & 2 & 33.3 \% & ---\\
+Exp-02 & 2 & 1 & 50.0 \% & ---\\
+Exp-05 & 2 & 1 & 50.0 \% & ---\\
+Exp-03 & 2 & 1 & 50.0 \% & ---\\
+Exp-04 & 2 & 1 & 50.0 \% & ---\\
+
+\end{supertabular}
+
+Heuristic applications:
+
+\begin{supertabular}{l|r|r}
+heuristic	& total applications & percentage \\ \hline
+Interactive & 34 & 53.9 \% \\
+symbolic execution & 16 & 25.3 \% \\
+System & 6 & 9.5 \% \\
+conditional right split & 4 & 6.3 \% \\
+simplifier & 2 & 3.1 \% \\
+weak unfold & 1 & 1.5 \% \\
+
+\end{supertabular}
+
+Rule applications:
+
+\begin{supertabular}{l|r|r}
+rule	        & total applications & percentage \\ \hline
+assign right & 21 & 33.3 \% \\
+simplifier & 8 & 12.6 \% \\
+normalize & 6 & 9.5 \% \\
+insert lemma & 5 & 7.9 \% \\
+if right & 5 & 7.9 \% \\
+cut formula & 2 & 3.1 \% \\
+skip right & 2 & 3.1 \% \\
+induction & 2 & 3.1 \% \\
+call right & 2 & 3.1 \% \\
+while exit right & 2 & 3.1 \% \\
+vardecls right & 2 & 3.1 \% \\
+weakening & 2 & 3.1 \% \\
+insert elim lemma & 2 & 3.1 \% \\
+split right & 1 & 1.5 \% \\
+while right & 1 & 1.5 \% \\
+
+\end{supertabular}
+
+Lemma applications:
+
+\begin{supertabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchfjsiz & 5 & 71.4 \% \\
+decl & 2 & 28.5 \% \\
+
+\end{supertabular}
+
+
+\end{document}
+
