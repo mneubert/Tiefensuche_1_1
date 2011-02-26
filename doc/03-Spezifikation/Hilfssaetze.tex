@@ -1,14 +1,13 @@
 \section{"`Hilfssätze"' - Spezifikation und Module}
+\label{sec:digraph-path}
 
 Bei der Bearbeitung des Projektes und der Beweisführung mussten verschiedene Ansätze aus der Graphenbibliothek zusammengeführt sowie Teilbeweise ausgelagert werden, da sie in mehreren Beweisen notwendig waren.\\
 Zunächst werde die Spezifikation "`union\_bool\_graph"' betrachtet, welche die notwendigen Pakete der Graphenbibliothek zusammenfasst. Folgenden die verwendete Spezifikation:
 
-union\_bool\_graph \label{union_bool_graph-spec} = digraph-outsorted-neighbours + bool
+union\_bool\_graph = digraph-outsorted-neighbours + bool
 
-\\
 Eine weitere Spezifikation ist "`digraph-path"', in welcher die in Kapitel 3.1 erwähnte Signatur "`getM"' definiert wird.
 
-\label{digraph-path-spec}%
 digraph-path = \\
 {\bf enr}\={\bf ich} union\_bool\_graph {\bf with}\+\\
 {\bf functions} getM  : elem $\times$ digraph \Imp  nat ;
@@ -31,7 +30,6 @@ Die Methode "`getM"' bekommt sowohl einen Knoten a sowie einen Graphen g übergeb
 	\item In Axiom 2 wird der leere Graph um einen Knoten a erweitert. Da Anzahl der von a erreichbaren Knoten ist in diesem Fall 1.
 	\item Im dritten Axiom wird ein Knoten b, welche noch nicht im Graphen lag sowie eine Kante vom Knoten an zu Knoten b hinzugefügt. Die Anzahl der erreichbaren Knoten entspricht nun der Anzahl der erreichbaren Knoten ohne den Knoten b plus 1. 
 \end{itemize}
-\\
 Die Spezifikation wird durch das Modul "`dfs-temp"' implementiert. Folgend ist die Implementierung der Funktion "`getM"' zu sehen.
 
 \medskip

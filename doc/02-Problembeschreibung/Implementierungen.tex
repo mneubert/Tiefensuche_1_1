@@ -1,2 +1,75 @@
 \section{Implementierungen}
 
+\par
+\vspace{0.2cm}
+\textbf{Rekursive Implementierung}
+\par
+
+Die Tiefensuche kann rekursiv wie in Listing \ref{lst:dfs-rek} als Pseudocode dargestellt implementiert werden. Die Funktion wird mit den Paramentern \texttt{open = Startknoten}, \texttt{close = leere Liste}, \texttt{ziel = Zielknotenmenge} und \texttt{graph = zu untersuchender Graph} aufgerufen.
+\par
+Zu Beginn wird geprüft, ob sich der aktuell betrachtete Knoten in der Zielknoten befindet. Ist dies der Fall wird \texttt{true} als Ergebnis zurückgegeben. Ansonsten wird der Knoten der close-Liste hinzugefügt und expandiert. Auf die Implementierung der Funktion \texttt{expand} wird nicht näher eingegangen. Sie bestimmt die Nachbarn eines Knotens unter Ausschluss derjenigen, die sich bereits auf der close-Liste befinden.
+\par
+Ist die open-Liste nach diesem Bearbeitungsschritt nicht leer, so erfolgt ein rekursiver Aufruf der Funktion.
+
+\begin{figure}[!h]
+\begin{lstlisting}[caption=Pseudocode rekursive Tiefensuche, label=lst:dfs-rek]
+dfs-rek(open, close, ziel, graph)
+{
+  knoten = open.pop;
+  if (knoten in ziel)
+  {
+    return true;
+  }
+  else
+  {
+    close := knoten + close;
+    open := expand (knoten, close) + open;
+    
+    if(open.isEmpty == false)
+    {
+      dfs-rek(open, close, ziel, graph);
+    }
+    else
+    {
+    	return false;
+    }
+  }
+}
+
+\end{lstlisting}
+\end{figure}
+
+\par
+\vspace{0.2cm}
+\textbf{Iterative Implementierung}
+\par
+
+Eine iterative Variante der Tiefensuche ist in Listing \ref{lst:dfs-it} als Pseudocode dargestellt. Die Aufrufparameter der Funktion sind der Startknoten (\texttt{startknoten}), die Zielknotenmenge (\texttt{ziel}) und der zu untersuchende Graph (\texttt{graph}). 
+\par
+Nach der Initialisierung der open- und close-Liste wird eine while-Schleife solange durchlaufen, bis die open-Liste leer ist oder vorzeitig mit der Rückgabe von \texttt{true} abgebrochen wird. In der Schleife wird der erste Knoten der open-Liste entnommen und geprüft, ob dieser zur Zielknotenmenge gehört. Ist dies der Fall war die Suche erfolgreich und es wird abgebrochen. Andernfalls wird der Knoten der close-Liste hinzugefügt und expandiert.
+\par
+Ist die open-Liste nach diesem Schritt leer, wird die Schleife verlassen und \texttt{false} zurückgegeben, da die Suche erfolglos war. Ansonsten erfolgt der nächste Schleifendurchlauf.
+
+\begin{figure}[!h]
+\begin{lstlisting}[caption=Pseudocode iterative Tiefensuche, label=lst:dfs-it]
+dfs-it(startknoten, ziel, graph)
+{
+  open := startknoten;
+  close := [];
+  while(open != empty)
+  {
+    knoten := open.pop;
+    if(knoten in ziel)
+    {
+      return true;
+    }
+    else
+    {
+      close := knoten + close;
+      open := expand(knoten, close) + open;
+    }  
+  }
+  return false;
+}
+\end{lstlisting}
+\end{figure}

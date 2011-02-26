@@ -1,4 +1,5 @@
-\subsection{Spezifikation "`digraph-dfs-func"'}
+\subsection{Spezifikation \texttt{digraph-dfs-func}}
+\label{sec:digraph-dfs-func}
 
 Im Gegensatz zu den vorangegangenen Kapiteln, bei dem die Tiefensuche als
 Prozedur spezifiziert und implementiert wurde, wird nun der Algorithmus als
@@ -9,7 +10,7 @@ Andernfalls wird die leere Liste zurückgegeben.
 \par
 Der folgende Absatz zeigt die Signatur der Spezifikation:
 
-\begin{tabbing}\label{digraph-dfs-func-spec}%
+\begin{tabbing}
 digraph-dfs-func = \\
 {\bf enr}\={\bf ich} union\_bool\_graph {\bf with}\+\\
 {\bf functions} deptSearchF  : elem $\times$ list $\times$ digraph \Imp  list ;
@@ -36,7 +37,7 @@ a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp deptSearchF(a
 {\bf end enrich}
 
 Die Spezifikation erweitert die Spezifikation \emph{union\_bool\_graph}, welche
-in Kapitel \ref{} erläutert wird. Innerhalb von \emph{digraph-dfs-func} wird die
+in Abschnitt \ref{sec:digraph-path} erläutert wird. Innerhalb von \emph{digraph-dfs-func} wird die
 Funktion \emph{deptSearchF} beschrieben, welche eine Abbildung von \emph{elem
 $\times$ list $\times$ digraph $\rightarrow$ list} ist. Die definierten Axiome
 werden im Folgenden entsprechend der obigen Ordnung erklärt:

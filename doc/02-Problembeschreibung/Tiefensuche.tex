@@ -1,2 +1,49 @@
 \section{Tiefensuche}
+\label{sec:tiefensuche}
 
+Die Tiefensuche ist ein Verfahren zum Traversieren von Graphen. Das Ziel besteht darin einen Knoten zu finden, der zu einer gegebenen Zielknotenmenge gehört. Die Suche ist genau dann erfolgreich, wenn ein Pfad von einem gegebenen Startknoten zu einem Zielknoten aus der Zielknotenmenge existiert.
+\par
+Es werden zunächst vom Startknoten alle direkt erreichbaren Knoten ermittelt, d.h. Knoten, die durch eine Kante mit dem Startknoten verbunden sind. Diese Knoten werden in eine open-Liste eingetragen. Auf der open-Liste befinden sich alle Knoten, die von einem expandierten Knoten erreichbar sind, selbst aber noch nicht expandiert wurden. Unter "`expandieren"' ist das Ermitteln der Nachbarknoten zu verstehen. Knoten, die bereits expandiert wurden, werden in die close-Liste eingetragen, um sie nicht nochmals zu untersuchen. Bei der Expansion eines Knotens werden nur Knoten berücksichtigt, die sich noch nicht auf der close-Liste befinden. Alle entdeckten Nachfolgerknoten werden vorn an die open-Liste angehangen. Daher kann die open-Liste als Stack betrachtet werden (LIFO-Prinzip). Durch die Verwendung dieser Datenstruktur unterscheidet sich die Tiefen- von der Breitensuche.
+\par
+Von der open-Liste wird nun immer der erste Knoten entnommen, auf die close-Liste gesetzt und expandiert. Die erhaltenen Nachfolgerknoten werden jeweils der open-Liste hinzugefügt.
+\par
+Die Suche endet, sobald ein Knoten aus der Zielknotenmenge erreicht wurde oder die open-Liste leer ist. Im letztgenannten Fall existiert kein Pfad vom Startknoten zu einem Zielknoten.
+\par
+Die Funktionsweise wird anhand des in Abb. \ref{fig:dfs-ex} gezeigten Beispielgraphen verdeutlicht. Dabei ist a der Startknoten und e der einzige Knoten in der Zielknotenmenge. In Tabelle \ref{tab:dfs-ex} sind alle Bearbeitungsschritte der Tiefensuche aufgeführt. Es wird jeweils angegeben, welcher Knoten bearbeitet wird und welche Elemente sich nach der Bearbeitung dieses Knotens auf der open- und close-Liste befinden.
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+	\node[vertex] (1) at (1,0) {a};
+	\node[vertex] (2) at (4,1) {b};
+	\node[vertex] (3) at (6,-1) {d};
+	\node[vertex] (4) at (6,1) {c};
+	\node[vertex] (5) at (8,0) {e};
+	%\node (3) at (4,0) {...};
+	\path [-] (1) edge node [above] {} (2);
+	\path [-] (1) edge node [above] {} (3);
+	\path [-] (2) edge node [above] {} (4);
+	\path [-] (3) edge node [above] {} (4);
+	\path [-] (3) edge node [above] {} (5);
+	\path [-] (4) edge node [above] {} (5);	
+\end{tikzpicture}
+\caption{Beispielgraph}
+\label{fig:dfs-ex}
+\end{figure}
+
+\begin{table}[!htp]
+\begin{center}
+\begin{tabular}{c|p{2cm}|p{2cm}}
+  %\hline
+  bearb. Knoten & open & close \\
+  \hline
+  - & [a] & [] \\
+  a & [b, d] & [a] \\
+  b & [c, d] & [a, b] \\
+  c & [e, d] & [a, b, c] \\
+  e & \multicolumn{2}{c}{Abbruch mit Rückgabewert \texttt{true}} \\
+	\end{tabular}
+	\caption{Abarbeitungschritte für Beispielgraphen}%
+	\label{tab:dfs-ex}%
+	\end{center}
+\end{table}

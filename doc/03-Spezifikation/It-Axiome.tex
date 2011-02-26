@@ -1,27 +1,27 @@
-\section{Spezifikation "`digraph-dfs-proc"'}
+\section{Spezifikation \texttt{digraph-dfs-proc}}
+\label{sec:digraph-dfs-proc}
 
 Ausgehend von den Überlegungen in Kapitel 2 soll zunächst eine Tiefensuche als Prozedur umgesetzt werden.
 Dies bedeutet, dass die Rückgabe des Programmes ein Wahrheitswert ist. Enthält der Pfad G einen Weg zum Startknoten zur Zielknotenmenge, so
 wird TRUE zurück geliefert, anderfalls FALSE. Im folgenden Absatz sieht man die Signatur der Spezifikation:
 
-\label{digraph-dfs-proc-spec}%
 digraph-dfs-proc = \\
 {\bf enrich} digraph-basic, union\_bool\_graph {\bf with}\+\\
 {\bf predicates} deptSearchP  : elem $\times$ list $\times$ digraph;
 
 {\bf axioms}
 
-\vdash z = [] \And a $\in$\_v g \Or a ' = [] \Imp (deptSearchP(a, z, g) \Equiv false);
+$\vdash$ z = [] \And a $\in$\_v g \Or a ' = [] \Imp (deptSearchP(a, z, g) \Equiv false);
 
-\vdash pathp(x, g) \And x.first = a \And x.last = b \Imp (deptSearchP(a, b ', g) \Equiv true);
+$\vdash$ pathp(x, g) \And x.first = a \And x.last = b \Imp (deptSearchP(a, b ', g) \Equiv true);
 
-\vdash a --$>$ b $\in$\_e g \And b $\in$ z \Imp (deptSearchP(a, z, g) \Equiv true);
+$\vdash$ a --$>$ b $\in$\_e g \And b $\in$ z \Imp (deptSearchP(a, z, g) \Equiv true);
 
-\vdash a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp (deptSearchP(a, z, g) \Equiv true);
+$\vdash$ a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp (deptSearchP(a, z, g) \Equiv true);
 
 {\bf end enrich}
 
-Die Spezifikation erweitert hierbei die vorhandenen Spezifikationen digraph-basic sowie union\_bool\_graph, welche Hilfssätze enthalten und im Kapitel 3.xx erläutert werden.
+Die Spezifikation erweitert hierbei die vorhandenen Spezifikationen digraph-basic sowie union\_bool\_graph, welche Hilfssätze enthalten und im Abschnitt \ref{sec:digraph-path} erläutert werden.
 Die in der Spezifikation definierte Prozedur deptSearchP bildet dabei drei Eingabeparameter elem $\times$ list $\times$ digraph auf einen Wahrheitswert ab.
 Dabei bezeichnet "`elem"' den Startknoten, "`list"' die Menge der Zielknoten und "`digraph"' den Graphen.
 Des Weiteren werden in der Spezifikation verschiedene Axiome deklariert:\\

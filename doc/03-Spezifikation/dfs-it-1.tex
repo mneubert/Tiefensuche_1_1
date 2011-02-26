@@ -1,12 +1,13 @@
-\section{Modul "`dfs-it-1"'}
+\section{Modul \texttt{dfs-it-1}}
+\label{sec:dfs-it-1}
 
-Das Modul "`dfs-it-1"' implementiert die Spezifikation "`digraph-dfs-proc"', also die Tiefensuche als Prozedur mit der Rückgabe eines Wahrheitswertes. Die genaue Implementierung ist unten aufgezeigt. Allgemein kann gesagt werden, dass zunächst die fehlerhaften Eingaben abgefangen werden, bevor der eigentliche Algorithmus zum Einsatz kommt. Dabei wird in einer Schleife so lange ein neuer Knoten expandiert, bis entweder ein Pfad gefunden wurde, oder alle erreichbaren Knoten abgearbeitet wurden. Für letzteren Fall wurde die Hilfsfunktion "`getM"' einegführt, welche im Kapitel 3.xx noch genauer erläutert wird. In der while-Schleife wird wie erwähnt ein Knoten von der open-Liste untersucht und geschaut, ob von ihm erreichbare Knoten noch nicht auf der close-Liste sind. Dazu wird die Funktion "`outsortSuccs"' verwendet, welche aus der Graphenbibliothek stammt.\\
+Das Modul "`dfs-it-1"' implementiert die Spezifikation "`digraph-dfs-proc"', also die Tiefensuche als Prozedur mit der Rückgabe eines Wahrheitswertes. Die genaue Implementierung ist unten aufgezeigt. Allgemein kann gesagt werden, dass zunächst die fehlerhaften Eingaben abgefangen werden, bevor der eigentliche Algorithmus zum Einsatz kommt. Dabei wird in einer Schleife so lange ein neuer Knoten expandiert, bis entweder ein Pfad gefunden wurde, oder alle erreichbaren Knoten abgearbeitet wurden. Für letzteren Fall wurde die Hilfsfunktion "`getM"' eingeführt, welche im Abschnitt \ref{sec:digraph-path} noch genauer erläutert wird. In der while-Schleife wird wie erwähnt ein Knoten von der open-Liste untersucht und geschaut, ob von ihm erreichbare Knoten noch nicht auf der close-Liste sind. Dazu wird die Funktion "`outsortSuccs"' verwendet, welche aus der Graphenbibliothek stammt.\\
 Unterhalb der Deklaration findet man noch einmal die Axiome. Hierbei wird aufgelistet, in wie weit die Axiome mit der Implementierung bewiesen werden konnten und wie die Abhängigkeiten untereinander sind. 
 
 {\parindent0cm
 
 
-{\LARGE\bf decl}\label{lemma-decl}
+{\LARGE\bf decl}
 
 \medskip
 
@@ -36,7 +37,7 @@ deptSearchP\#(a, z, g; {\bf var} bbool) \\
 
 \medskip
 
-{\LARGE\bf Term-deptsearchpjsiz}\label{lemma-Term-deptsearchpjsiz}
+{\LARGE\bf Term-deptsearchpjsiz}
 
 \medskip
 
@@ -56,7 +57,7 @@ deptSearchP\#(a, z, g; {\bf var} bbool) \\
 
 \medskip
 
-{\LARGE\bf Exp-01}\label{lemma-Exp-01}
+{\LARGE\bf Exp-01}
 
 \medskip
 
@@ -75,7 +76,7 @@ deptSearchP\#(a, z, g; {\bf var} bbool) \\
 
 \medskip
 
-{\LARGE\bf Exp-02}\label{lemma-Exp-02}
+{\LARGE\bf Exp-02}
 
 \medskip
 
@@ -94,7 +95,7 @@ deptSearchP\#(a, z, g; {\bf var} bbool) \\
 
 \medskip
 
-{\LARGE\bf Exp-03}\label{lemma-Exp-03}
+{\LARGE\bf Exp-03}
 
 \medskip
 
@@ -113,7 +114,7 @@ deptSearchP\#(a, z, g; {\bf var} bbool) \\
 
 \medskip
 
-{\LARGE\bf Exp-04}\label{lemma-Exp-04}
+{\LARGE\bf Exp-04}
 
 \medskip
 

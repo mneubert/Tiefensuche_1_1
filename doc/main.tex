@@ -1,9 +1,29 @@
-\documentclass[11pt,cleardoubleplain,oneside,a4paper,bibtotoc,listof=totoc]{scrbook}
+\documentclass[11pt,twoside,a4paper,listof=totoc]{scrbook}
 
 %Datei für die angepassten Styles laden
 \usepackage{HTWKstyle}
 \usepackage[numbers]{natbib}
-\usepackage{latexsym,a4wide,logicdefs,amssymb,multicol}
+\usepackage{latexsym}
+%\usepackage{a4wide}
+\usepackage{logicdefs}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shadows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{positioning}
+\tikzstyle{vertex}=[circle,draw,thick,inner sep=3pt,minimum size=6mm]
+\tikzstyle{level 1}=[sibling distance=20mm]
+\tikzstyle{level 2}=[sibling distance=10mm]
+\tikzstyle{level 3}=[sibling distance=5mm]
+\tikzstyle{empty}=[sibling distance=5mm]
+\tikzstyle{rechteck}=[rectangle,draw,thick,inner sep=4pt]
+\tikzset{packet/.style={rectangle, draw, very thick,
+minimum size=6mm, rounded corners=1mm}}
+
+\newcolumntype{r}{p{2cm}}
 
 \begin{document}
 
