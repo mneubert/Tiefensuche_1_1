@@ -1,6 +1,10 @@
 \section{Modul \texttt{dfs-rek-1}}
 \label{sec:dfs-rek-1}
 
+Das Modul \texttt{dfs-rek-1} beinhaltet die rekursive Implementierung der Tiefensuche und genügt der Spezifikation \texttt{digraph-dfs-proc} (siehe Abs. \ref{sec:digraph-dfs-proc}). 
+\par
+Die Implementierung ist orientiert sich an der in Abs. \ref{sec:implementierungen} beschreibenen Variante einer rekursiven Tiefensuche. Zur Vereinfachung des Terminationsbeweises wurde jedoch wie bei der iterativen Umsetzung zusätzlich die Hilfsfunktion \texttt{getM(.,.)} verwendet. In \texttt{decl-01} erfolgt daher zunächst der Aufruf dieser Funktion, um die Anzahl der erreichbaren Knoten vom Startknoten zu bestimmen. Danach wird die Tiefensuche gestartet, deren Quellcode \texttt{decl-03} zeigt. Nach der Intialisierung der Rückgabevariablen \texttt{bbool} mit dem Wahrheitswert \texttt{false} werden die Abbruchbedingungen geprüft. Ist weder die open-Liste noch die Zielknotenmenge leer sowie die Anzahl der noch erreichbaren Knoten größer 0, so wird der erste Knoten der open-Liste entnommen. Für diesen wird geprüft, ob er sich in der Zielknotenmenge befindet. In diesem Fall war die Suche erfolgreich und wird beendet. Anderfalls wird der Knoten der close-Liste hinzugefügt und expandiert. Zur Expansion wird die Graphenbiblioteksfunktion outsortSuccs genutzt (vgl. \cite{dr:2008}). Abschließend wird die Anzahl der erreichbaren Knoten dekrementiert und es efolgt ein rekursiver Aufruf der Funktion, sofern noch Knoten erreichbar sind.
+
 {\parindent0cm
 
 {\LARGE\bf decl-01}
@@ -49,6 +53,8 @@ bbool := false;\\
 \end{itemize}
 
 \medskip
+
+Nachfolgend werden die Details und Abhängigkeiten der zu diesem Modul gehörigen Beweise gemäß der Spezifikation \texttt{digraph-dfs-proc} aufgelistet.
 
 {\LARGE\bf Term-deptsearchpjsiz}
 
@@ -163,8 +169,9 @@ bbool := false;\\
 \item       proof steps  : 14
 \end{itemize}
 
+Alle Beweisverpflichtungen konnten erfüllt werden. Den nachfolgenden Tabellen kann entnommen werden, welche Mittel dazu eingesetzt wurden, von welchem Umfang die Beweise sind und bei wieviel Prozent der Automatisierungsgrad lag.
 
-Statistic for each theorem:
+Statistic for each theorem: \\
 
 \begin{supertabular}{l|r|r|r|r}
 	& proof steps & interactions & automation & induction\\ \hline
@@ -174,7 +181,6 @@ Term-deptsearchpjsiz & 5 & 5 & 0.0 \% & ---\\
 Exp-03 & 4 & 3 & 25.0 \% & ---\\
 Exp-04 & 2 & 1 & 50.0 \% & ---\\
 Exp-02 & 2 & 1 & 50.0 \% & ---\\
-
 \end{supertabular}
 
 Heuristic applications:
