@@ -12,7 +12,7 @@ Zu Beginn wird geprüft, ob sich der aktuell betrachtete Knoten in der Zielknoten
 \par
 Ist die open-Liste nach diesem Bearbeitungsschritt nicht leer, so erfolgt ein rekursiver Aufruf der Funktion.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \begin{lstlisting}[caption=Pseudocode rekursive Tiefensuche, label=lst:dfs-rek]
 dfs-rek(open, close, ziel, graph)
 {
@@ -51,7 +51,7 @@ Nach der Initialisierung der open- und close-Liste wird eine while-Schleife sola
 \par
 Ist die open-Liste nach diesem Schritt leer, wird die Schleife verlassen und \texttt{false} zurückgegeben, da die Suche erfolglos war. Ansonsten erfolgt der nächste Schleifendurchlauf.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \begin{lstlisting}[caption=Pseudocode iterative Tiefensuche, label=lst:dfs-it]
 dfs-it(startknoten, ziel, graph)
 {

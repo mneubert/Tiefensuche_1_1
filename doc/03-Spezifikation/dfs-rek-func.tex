@@ -5,7 +5,7 @@ Das Modul \texttt{dfs-rek-func} beinhaltet die rekursive Implementierung der
 Tiefensuchefunktion. Dabei setzt sich das Programm aus einer Startmethode und
 der eigentlichen rekursiven Funktion zusammen. Zunächst wird (analog zur
 Prozedur - siehe Abschnitt \ref{sec:dfs-rek-1}) in der Startmethode die Anzahl der
-erreichbaren Knoten durch die Hilfsfunktion \texttt{getM(.,.)} errechnet.
+erreichbaren Knoten durch die Hilfsfunktion \texttt{getM} errechnet.
 Anschließend kommt es zur eigentlichen Ausführung der rekursiven Funktion. Nach
 den Initialisierungen und den Tests der übergebenen Parameter auf Korrektheit
 (alle Variablen belegt, keine Null-Werte) wird in jedem Durchlauf für den
@@ -240,11 +240,12 @@ path := [];\\
 
 In diesem Fall konnten bis auf einen Teil des Terminationsbeweises alle Axiome
 bewiesen werden. Die einzelnen Statistiken zu den Beweisschritten werden
-nachfolgend aufgelistet:
+in den Tabellen \ref{tab:dfs-rek-func-stat} bis \ref{tab:dfs-rek-func-lemma} aufgelistet.
 
-Statistic for each theorem:
+\begin{table}[!ht]
+	\centering
 
-\begin{supertabular}{l|r|r|r|r}
+\begin{tabular}{l|x|x|x|x}
 	& proof steps & interactions & automation & induction\\ \hline
 Term-deptsearchfjsiz-01 & 24 & 23 & 4.1 \% & ---\\
 Term-deptsearchfjsiz & 5 & 5 & 0.0 \% & ---\\
@@ -255,21 +256,31 @@ Exp-02 & 3 & 2 & 33.3 \% & ---\\
 Exp-04 & 3 & 2 & 33.3 \% & ---\\
 Exp-03 & 3 & 2 & 33.3 \% & ---\\
 
-\end{supertabular}
+\end{tabular}
 
-Heuristic applications:
+\caption{dfs-rek-func: Statistic for each theorem}
+	\label{tab:dfs-rek-func-stat}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 heuristic	& total applications & percentage \\ \hline
 Interactive & 16 & 69.5 \% \\
 System & 6 & 26.0 \% \\
 simplifier & 1 & 4.3 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-Rule applications:
+\caption{dfs-rek-func: Heuristic applications}
+	\label{tab:dfs-rek-func-heur}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 rule	        & total applications & percentage \\ \hline
 insert lemma & 7 & 30.4 \% \\
 normalize & 6 & 26.0 \% \\
@@ -278,19 +289,26 @@ assign right & 2 & 8.6 \% \\
 vardecls right & 1 & 4.3 \% \\
 call right & 1 & 4.3 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-Lemma applications:
+\caption{dfs-rek-func: Rule applications}
+	\label{tab:dfs-rek-func-rule}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 theorem	        & total applications & percentage \\ \hline
 Term-deptsearchfjsiz & 6 & 75.0 \% \\
 decl-01 & 1 & 12.5 \% \\
 Term-deptsearchfjsiz-01 & 1 & 12.5 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-
+\caption{dfs-rek-func: Lemma applications}
+	\label{tab:dfs-rek-func-lemma}
+\end{table}
 
 
 

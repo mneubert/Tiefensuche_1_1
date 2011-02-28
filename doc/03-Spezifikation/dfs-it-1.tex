@@ -1,7 +1,7 @@
 \subsection{Modul \texttt{dfs-it-1}}
 \label{sec:dfs-it-1}
 
-Das Modul "`dfs-it-1"' implementiert die Spezifikation "`digraph-dfs-proc"', also die Tiefensuche als Prozedur mit der Rückgabe eines Wahrheitswertes. Die genaue Implementierung ist unten aufgezeigt. Allgemein kann gesagt werden, dass zunächst die fehlerhaften Eingaben abgefangen werden, bevor der eigentliche Algorithmus zum Einsatz kommt. Dabei wird in einer Schleife so lange ein neuer Knoten expandiert, bis entweder ein Pfad gefunden wurde oder alle erreichbaren Knoten abgearbeitet wurden. Für letzteren Fall wurde die Hilfsfunktion "`getM"' eingeführt, welche im Abschnitt \ref{sec:digraph-path} noch genauer erläutert wird. In der while-Schleife wird wie erwähnt ein Knoten von der open-Liste untersucht und geschaut, ob von ihm erreichbare Knoten noch nicht auf der close-Liste sind. Dazu wird die Funktion "`outsortSuccs"' verwendet, welche aus der Graphenbibliothek stammt.\\
+Das Modul \texttt{dfs-it-1} implementiert die Spezifikation \texttt{digraph-dfs-proc}, also die Tiefensuche als Prozedur mit der Rückgabe eines Wahrheitswertes. Die genaue Implementierung ist unten aufgezeigt. Allgemein kann gesagt werden, dass zunächst die fehlerhaften Eingaben abgefangen werden, bevor der eigentliche Algorithmus zum Einsatz kommt. Dabei wird in einer Schleife so lange ein neuer Knoten expandiert, bis entweder ein Pfad gefunden wurde oder alle erreichbaren Knoten abgearbeitet wurden. Für letzteren Fall wurde die Hilfsfunktion \texttt{getM} eingeführt, welche im Abschnitt \ref{sec:digraph-path} noch genauer erläutert wird. In der while-Schleife wird wie erwähnt ein Knoten von der open-Liste untersucht und geschaut, ob von ihm erreichbare Knoten noch nicht auf der close-Liste sind. Dazu wird die Funktion \texttt{outsortSuccs} verwendet, welche aus der Graphenbibliothek stammt.\\
 Unterhalb der Deklaration findet man noch einmal die Axiome. Hierbei wird aufgelistet, in wie weit die Axiome mit der Implementierung bewiesen werden konnten und wie die Abhängigkeiten untereinander sind. 
 
 {\parindent0cm
@@ -133,11 +133,12 @@ deptSearchP\#(a, z, g; {\bf var} bbool) \\
 
 \medskip
 
-Wie zu sehen ist, konnten alle Axiome bewiesen werden. Dabei wurde bei den Axiomen 2 bis 4 auf den Terminationsbeweis zurück gegriffen. In folgendem Abschnitt sind noch einmal die bei den Beweisen verwendeten Beweisschritte aufgeführt.
+Wie zu sehen ist, konnten alle Axiome bewiesen werden. Dabei wurde bei den Axiomen 2 bis 4 auf den Terminationsbeweis zurück gegriffen. In den Tabellen \ref{tab:dfs-it-1-stat} bis \ref{tab:dfs-it-1-lemma} sind noch einmal die bei den Beweisen verwendeten Beweisschritte aufgeführt.
 
-Statistic for each theorem:
+\begin{table}[!ht]
+	\centering
 
-\begin{supertabular}{l|r|r|r|r}
+\begin{tabular}{l|x|x|x|x}
 	& proof steps & interactions & automation & induction\\ \hline
 Term-deptsearchpjsiz & 47 & 47 & 0.0 \% & nat\\
 Exp-01 & 8 & 0 & 100.0 \% & ---\\
@@ -145,11 +146,17 @@ Exp-03 & 4 & 3 & 25.0 \% & ---\\
 Exp-04 & 2 & 1 & 50.0 \% & ---\\
 Exp-02 & 2 & 1 & 50.0 \% & ---\\
 
-\end{supertabular}
+\end{tabular}
 
-Heuristic applications:
+	\caption{dfs-it-1: Statistic for each theorem}
+	\label{tab:dfs-it-1-stat}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 heuristic	& total applications & percentage \\ \hline
 Interactive & 52 & 82.5 \% \\
 symbolic execution & 5 & 7.9 \% \\
@@ -157,11 +164,17 @@ System & 4 & 6.3 \% \\
 simplifier & 1 & 1.5 \% \\
 weak unfold & 1 & 1.5 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-Rule applications:
+	\caption{dfs-it-1: Heuristic applications}
+	\label{tab:dfs-it-1-heur}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 rule	        & total applications & percentage \\ \hline
 assign right & 13 & 20.6 \% \\
 simplifier & 8 & 12.6 \% \\
@@ -188,13 +201,23 @@ call right & 1 & 1.5 \% \\
 vardecls right & 1 & 1.5 \% \\
 execute while & 1 & 1.5 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-Lemma applications:
+	\caption{dfs-it-1: Rule applications}
+	\label{tab:dfs-it-1-rule}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 theorem	        & total applications & percentage \\ \hline
 Term-deptsearchpjsiz & 4 & 66.6 \% \\
 decl & 2 & 33.3 \% \\
 
-\end{supertabular}
+\end{tabular}
+
+	\caption{dfs-it-1: Lemma applications}
+	\label{tab:dfs-it-1-lemma}
+\end{table}

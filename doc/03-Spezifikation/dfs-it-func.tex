@@ -4,7 +4,7 @@
 Im Modul \texttt{dfs-it-func-1} wird die Tiefensuchefunktion iterativ
 implementiert. Wesentlich für die Verarbeitung ist hierbei, dass die maximale
 Anzahl der erreichbaren Knoten in der Variablen n0 gespeichert wird. Um dies zu
-bestimmen, wird die Hilfsfunktion \texttt{getM(.,.)} benutzt. Außerdem werden
+bestimmen, wird die Hilfsfunktion \texttt{getM} benutzt. Außerdem werden
 zu Beginn weitere Initialisierungen und Korrektheitsprüfungen der übergebenen
 Parameter durchgeführt. Die Kernfunktionalität leistet die äußere Schleife, die
 nach maximal n0-Schritten abbricht und den Graphen durchläuft. Besonders für die
@@ -220,11 +220,12 @@ deptSearchF\#(a, z, g; {\bf var} y) \\
 
 Wie für den rekursiven Fall konnte der Terminationsbeweis nicht vollständig
 abgeschlossen werden. Die restlichen Axiome wurden allerdings bewiesen.
-Nachfolgend eine Auflistung zu den Beweisschritten:
+Die Tabellen \ref{tab:dfs-it-func-stat} bis \ref{tab:dfs-it-func-lemma} zeigen eine Auflistung zu den Beweisschritten.
 
-Statistic for each theorem:
+\begin{table}[!ht]
+	\centering
 
-\begin{supertabular}{l|r|r|r|r}
+\begin{tabular}{l|x|x|x|x}
 	& proof steps & interactions & automation & induction\\ \hline
 Term-deptsearchfjsiz & 39 & 26 & 33.3 \% & 2\\
 Exp-01 & 13 & 2 & 84.6 \% & ---\\
@@ -234,11 +235,16 @@ Exp-05 & 2 & 1 & 50.0 \% & ---\\
 Exp-03 & 2 & 1 & 50.0 \% & ---\\
 Exp-04 & 2 & 1 & 50.0 \% & ---\\
 
-\end{supertabular}
+\end{tabular}
 
-Heuristic applications:
+\caption{dfs-it-func-1: Statistic for each theorem}
+	\label{tab:dfs-it-func-stat}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 heuristic	& total applications & percentage \\ \hline
 Interactive & 34 & 53.9 \% \\
 symbolic execution & 16 & 25.3 \% \\
@@ -247,11 +253,16 @@ conditional right split & 4 & 6.3 \% \\
 simplifier & 2 & 3.1 \% \\
 weak unfold & 1 & 1.5 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-Rule applications:
+\caption{dfs-it-func-1: Heuristic applications}
+	\label{tab:dfs-it-func-heur}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 rule	        & total applications & percentage \\ \hline
 assign right & 21 & 33.3 \% \\
 simplifier & 8 & 12.6 \% \\
@@ -269,14 +280,22 @@ insert elim lemma & 2 & 3.1 \% \\
 split right & 1 & 1.5 \% \\
 while right & 1 & 1.5 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-Lemma applications:
+\caption{dfs-it-func-1: Rule applications}
+	\label{tab:dfs-it-func-rule}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 theorem	        & total applications & percentage \\ \hline
 Term-deptsearchfjsiz & 5 & 71.4 \% \\
 decl & 2 & 28.5 \% \\
 
-\end{supertabular}
+\end{tabular}
 
+\caption{dfs-it-func-1: Lemma applications}
+	\label{tab:dfs-it-func-lemma}
+\end{table}

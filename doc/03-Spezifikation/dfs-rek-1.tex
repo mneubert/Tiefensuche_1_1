@@ -169,11 +169,12 @@ Nachfolgend werden die Details und Abhängigkeiten der zu diesem Modul gehörigen 
 \item       proof steps  : 14
 \end{itemize}
 
-Alle Beweisverpflichtungen konnten erfüllt werden. Den nachfolgenden Tabellen kann entnommen werden, welche Mittel dazu eingesetzt wurden, von welchem Umfang die Beweise sind und bei wieviel Prozent der Automatisierungsgrad lag.
+Alle Beweisverpflichtungen konnten erfüllt werden. Den Tabellen \ref{tab:dfs-rek-1-stat} bis \ref{tab:dfs-rek-1-rule} kann entnommen werden, welche Mittel dazu eingesetzt wurden, von welchem Umfang die Beweise sind und bei wieviel Prozent der Automatisierungsgrad lag.
 
-Statistic for each theorem: \\
+\begin{table}[!ht]
+	\centering
 
-\begin{supertabular}{l|r|r|r|r}
+\begin{tabular}{l|x|x|x|x}
 	& proof steps & interactions & automation & induction\\ \hline
 Term-deptsearchpjsiz-01 & 14 & 14 & 0.0 \% & nat\\
 Exp-01 & 10 & 1 & 90.0 \% & ---\\
@@ -181,11 +182,16 @@ Term-deptsearchpjsiz & 5 & 5 & 0.0 \% & ---\\
 Exp-03 & 4 & 3 & 25.0 \% & ---\\
 Exp-04 & 2 & 1 & 50.0 \% & ---\\
 Exp-02 & 2 & 1 & 50.0 \% & ---\\
-\end{supertabular}
+\end{tabular}
 
-Heuristic applications:
+	\caption{dfs-rek-1: Statistic for each theorem}
+	\label{tab:dfs-rek-1-stat}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 heuristic	& total applications & percentage \\ \hline
 Interactive & 25 & 67.5 \% \\
 symbolic execution & 5 & 13.5 \% \\
@@ -193,11 +199,32 @@ System & 4 & 10.8 \% \\
 simplifier & 2 & 5.4 \% \\
 weak unfold & 1 & 2.7 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-Rule applications:
+\caption{dfs-rek-1: Heuristic applications}
+	\label{tab:dfs-rek-1-heur}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchpjsiz & 4 & 44.4 \% \\
+decl-03 & 2 & 22.2 \% \\
+decl-01 & 2 & 22.2 \% \\
+Term-deptsearchpjsiz-01 & 1 & 11.1 \% \\
+
+\end{tabular}
+
+\caption{dfs-rek-1: Lemma applications}
+	\label{tab:dfs-rek-1-lemma}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 rule	        & total applications & percentage \\ \hline
 assign right & 6 & 16.2 \% \\
 insert lemma & 5 & 13.5 \% \\
@@ -217,17 +244,9 @@ vardecls left & 1 & 2.7 \% \\
 case distinction & 1 & 2.7 \% \\
 skip left & 1 & 2.7 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-Lemma applications:
+\caption{dfs-rek-1: Rule applications}
+	\label{tab:dfs-rek-1-rule}
+\end{table}
 
-\begin{supertabular}{l|r|r}
-theorem	        & total applications & percentage \\ \hline
-Term-deptsearchpjsiz & 4 & 44.4 \% \\
-decl-03 & 2 & 22.2 \% \\
-decl-01 & 2 & 22.2 \% \\
-Term-deptsearchpjsiz-01 & 1 & 11.1 \% \\
-
-\end{supertabular}
-
-\medskip

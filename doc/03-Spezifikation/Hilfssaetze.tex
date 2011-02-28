@@ -2,11 +2,11 @@
 \label{sec:digraph-path}
 
 Bei der Bearbeitung des Projektes und der Beweisführung mussten verschiedene Ansätze aus der Graphenbibliothek zusammengeführt sowie Teilbeweise ausgelagert werden, da sie in mehreren Beweisen notwendig waren.\\
-Zunächst werde die Spezifikation "`union\_bool\_graph"' betrachtet, welche die notwendigen Pakete der Graphenbibliothek zusammenfasst. Folgenden die verwendete Spezifikation:
+Zunächst werde die Spezifikation \texttt{union\_bool\_graph} betrachtet, welche die notwendigen Pakete der Graphenbibliothek zusammenfasst. Folgenden die verwendete Spezifikation:
 
 union\_bool\_graph = digraph-outsorted-neighbours + bool
 
-Eine weitere Spezifikation ist "`digraph-path"', in welcher die in Kapitel 3.1 erwähnte Signatur "`getM"' definiert wird.
+Eine weitere Spezifikation ist \texttt{digraph-path}, in welcher die in Kapitel 3.1 erwähnte Signatur \texttt{getM} definiert wird.
 
 digraph-path = \\
 {\bf enr}\={\bf ich} union\_bool\_graph {\bf with}\+\\
@@ -23,14 +23,14 @@ getM(a, @g +v a) = 1;
 \end{quote}
 {\bf end enrich}
 
-Die Methode "`getM"' bekommt sowohl einen Knoten a sowie einen Graphen g übergeben und gibt eine Zahl m zurück. Diese bezeichnet hierbei die Anzahl der von dem Knoten a im Graphen g erreichbaren Knoten, wobei sowohl direkt erreichbare als auch über transitive Kanten erreichbare berücksichtigt werden. Auch hier werden wieder drei Axiome definiert:
+Die Methode \texttt{getM} bekommt sowohl einen Knoten a sowie einen Graphen g übergeben und gibt eine Zahl m zurück. Diese bezeichnet hierbei die Anzahl der von dem Knoten a im Graphen g erreichbaren Knoten, wobei sowohl direkt erreichbare als auch über transitive Kanten erreichbare berücksichtigt werden. Auch hier werden wieder drei Axiome definiert:
 
 \begin{itemize}
 	\item Axiom 1 gibt dann, dass in einem leeren Graphen kein Knoten von a erreicht werden kann.
 	\item In Axiom 2 wird der leere Graph um einen Knoten a erweitert. Die Anzahl der von a erreichbaren Knoten ist in diesem Fall 1.
 	\item Im dritten Axiom wird ein Knoten b, welcher noch nicht im Graphen lag sowie eine Kante vom Knoten a zu Knoten b hinzugefügt. Die Anzahl der erreichbaren Knoten entspricht nun der Anzahl der erreichbaren Knoten ohne den Knoten b plus 1. 
 \end{itemize}
-Die Spezifikation wird durch das Modul "`dfs-temp"' implementiert. Folgend ist die Implementierung der Funktion "`getM"' zu sehen.
+Die Spezifikation wird durch das Modul \texttt{dfs-temp} implementiert. Folgend ist die Implementierung der Funktion \texttt{getM} zu sehen.
 
 \medskip
 
@@ -45,7 +45,7 @@ getM\#(a, g; {\bf var} n) \\
 {\bf \}}\\
 \}
 
-Für einen gegebenen Knoten werden in einer Schleife alle anderen Knoten des Graphen betrachtet. Mit der Funktion "`path$\exists$"' aus der Graphenbibliothek wird dann überprüft, ob es einen Pfad zwischen den beiden Knoten gibt. Wenn ja, wird die Zählvariable erhöht. \\
+Für einen gegebenen Knoten werden in einer Schleife alle anderen Knoten des Graphen betrachtet. Mit der Funktion \texttt{path$\exists$} aus der Graphenbibliothek wird dann überprüft, ob es einen Pfad zwischen den beiden Knoten gibt. Wenn ja, wird die Zählvariable erhöht. \\
 Die Beweise der Axiome gelangen alle, wie sich in folgendem Abschnitt sehen lässt. 
 \medskip
 
@@ -93,31 +93,42 @@ Proof steps: 1, interactions: 1
 
 \medskip
 
-Auch hier sei wieder auf die verwendeten Beweisschritte hingewiesen, welche in den folgenden Tabellen aufgeführt sind:
+Auch hier sei wieder auf die verwendeten Beweisschritte hingewiesen, welche in den Tabellen \ref{tab:digraph-path-stat} bis \ref{tab:digraph-path-lemma} aufgeführt sind.
 
-Statistic for each theorem:
+\begin{table}[!ht]
+	\centering
 
-\begin{supertabular}{l|r|r|r|r}
+\begin{tabular}{l|x|x|x|x}
 	& proof steps & interactions & automation & induction\\ \hline
 Term-getmjsiz & 50 & 50 & 0.0 \% & nat\\
 Exp-02 & 6 & 6 & 0.0 \% & ---\\
 Exp-01 & 2 & 1 & 50.0 \% & ---\\
 Exp-03 & 1 & 1 & 0.0 \% & ---\\
 
-\end{supertabular}
+\end{tabular}
 
-Heuristic applications:
+\caption{digraph-path: Statistic for each theorem}
+	\label{tab:digraph-path-stat}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 heuristic	& total applications & percentage \\ \hline
 Interactive & 57 & 98.2 \% \\
 System & 1 & 1.7 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-Rule applications:
+\caption{digraph-path: Heuristic applications}
+	\label{tab:digraph-path-heur}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 rule	        & total applications & percentage \\ \hline
 insert rewrite lemma & 14 & 24.1 \% \\
 cut formula & 9 & 15.5 \% \\
@@ -139,13 +150,22 @@ exists left & 1 & 1.7 \% \\
 induction & 1 & 1.7 \% \\
 all left & 1 & 1.7 \% \\
 
-\end{supertabular}
+\end{tabular}
 
-Lemma applications:
+\caption{digraph-path: Rule applications}
+	\label{tab:digraph-path-rule}
+\end{table}
 
-\begin{supertabular}{l|r|r}
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
 theorem	        & total applications & percentage \\ \hline
 decl & 2 & 66.6 \% \\
 Term-getmjsiz & 1 & 33.3 \% \\
 
-\end{supertabular}
+\end{tabular}
+
+\caption{digraph-path: Lemma applications}
+	\label{tab:digraph-path-lemma}
+\end{table}
