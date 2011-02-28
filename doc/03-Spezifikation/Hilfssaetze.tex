@@ -27,8 +27,8 @@ Die Methode "`getM"' bekommt sowohl einen Knoten a sowie einen Graphen g übergeb
 
 \begin{itemize}
 	\item Axiom 1 gibt dann, dass in einem leeren Graphen kein Knoten von a erreicht werden kann.
-	\item In Axiom 2 wird der leere Graph um einen Knoten a erweitert. Da Anzahl der von a erreichbaren Knoten ist in diesem Fall 1.
-	\item Im dritten Axiom wird ein Knoten b, welche noch nicht im Graphen lag sowie eine Kante vom Knoten an zu Knoten b hinzugefügt. Die Anzahl der erreichbaren Knoten entspricht nun der Anzahl der erreichbaren Knoten ohne den Knoten b plus 1. 
+	\item In Axiom 2 wird der leere Graph um einen Knoten a erweitert. Die Anzahl der von a erreichbaren Knoten ist in diesem Fall 1.
+	\item Im dritten Axiom wird ein Knoten b, welcher noch nicht im Graphen lag sowie eine Kante vom Knoten a zu Knoten b hinzugefügt. Die Anzahl der erreichbaren Knoten entspricht nun der Anzahl der erreichbaren Knoten ohne den Knoten b plus 1. 
 \end{itemize}
 Die Spezifikation wird durch das Modul "`dfs-temp"' implementiert. Folgend ist die Implementierung der Funktion "`getM"' zu sehen.
 

@@ -6,7 +6,7 @@
 \textbf{Rekursive Implementierung}
 \par
 
-Die Tiefensuche kann rekursiv wie in Listing \ref{lst:dfs-rek} als Pseudocode dargestellt implementiert werden. Die Funktion wird mit den Paramentern \texttt{open = Startknoten}, \texttt{close = leere Liste}, \texttt{ziel = Zielknotenmenge} und \texttt{graph = zu untersuchender Graph} aufgerufen.
+Die Tiefensuche kann rekursiv, wie in Listing \ref{lst:dfs-rek} als Pseudocode dargestellt, implementiert werden. Die Funktion wird mit den Parametern \texttt{open = Startknoten}, \texttt{close = leere Liste}, \texttt{ziel = Zielknotenmenge} und \texttt{graph = zu untersuchender Graph} aufgerufen.
 \par
 Zu Beginn wird geprüft, ob sich der aktuell betrachtete Knoten in der Zielknoten befindet. Ist dies der Fall wird \texttt{true} als Ergebnis zurückgegeben. Ansonsten wird der Knoten der close-Liste hinzugefügt und expandiert. Auf die Implementierung der Funktion \texttt{expand} wird nicht näher eingegangen. Sie bestimmt die Nachbarn eines Knotens unter Ausschluss derjenigen, die sich bereits auf der close-Liste befinden.
 \par

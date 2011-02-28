@@ -8,12 +8,12 @@ Prozedur - siehe Abschnitt \ref{sec:dfs-rek-1}) in der Startmethode die Anzahl d
 erreichbaren Knoten durch die Hilfsfunktion \emph{getM( . , . )} errechnet.
 Anschließend kommt es zur eigentlichen Ausführung der rekursiven Funktion. Nach
 den Initialisierungen und den Tests der übergebenen Parameter auf Korrektheit
-(alle Variablen belegt, keine Null-Werte), wird in jedem Durchlauf für den
-aktuell betrachteten Knoten, der Graph expandiert und die neu gefundenen Knoten
+(alle Variablen belegt, keine Null-Werte) wird in jedem Durchlauf für den
+aktuell betrachteten Knoten der Graph expandiert und die neu gefundenen Knoten
 einzeln weiterverfolgt. Besonderheit bei dieser Variante als Funktion ist, dass
 mittels einer Schleife ein Backtracking realisiert wird, welches die
 Exploration des Graphen auf einfache Weise ermöglicht. Dabei wird die
-Gegebenheit ausgenutzt, dass durch das rekursive Verhalten, korrekte Teilstücke
+Gegebenheit ausgenutzt, dass durch das rekursive Verhalten korrekte Teilstücke
 des bereits gefundenen Weges stets wiederverwendet werden können und bei
 Verzweigungen innerhalb der Schleife alle Wege durchprobiert werden.
 \par
