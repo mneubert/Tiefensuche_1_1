@@ -1,14 +1,14 @@
 \subsection{Modul \texttt{dfs-it-func-1}}
 \label{sec:dfs-it-func-1}
 
-Im Modul \emph{dfs-it-func-1} wird die Tiefensuchefunktion iterativ
+Im Modul \texttt{dfs-it-func-1} wird die Tiefensuchefunktion iterativ
 implementiert. Wesentlich für die Verarbeitung ist hierbei, dass die maximale
 Anzahl der erreichbaren Knoten in der Variablen n0 gespeichert wird. Um dies zu
-bestimmen, wird die Hilfsfunktion \emph{getM( . , . )} benutzt. Außerdem werden
+bestimmen, wird die Hilfsfunktion \texttt{getM(.,.)} benutzt. Außerdem werden
 zu Beginn weitere Initialisierungen und Korrektheitsprüfungen der übergebenen
 Parameter durchgeführt. Die Kernfunktionalität leistet die äußere Schleife, die
-nach maximal n0 Schritten abbricht und den Graphen durchläuft. Besonders für die
-Funktion ist nun, dass um am Ende einen Rückgabewert zu liefern, ein weiterer
+nach maximal n0-Schritten abbricht und den Graphen durchläuft. Besonders für die
+Funktion ist es, dass um am Ende einen Rückgabewert zu liefern, ein weiterer
 Graph erzeugt wird, der zunächst leer ist, im Verlaufe der Abarbeitung jedoch
 jeweils um die expandierten Knoten erweitert wird. Der Graph dient der
 Speicherung der Vorgängerbeziehung zwischen den explorierten Knoten, so dass

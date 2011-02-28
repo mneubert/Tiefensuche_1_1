@@ -1,12 +1,13 @@
 \subsection{Spezifikation \texttt{digraph-dfs-func}}
 \label{sec:digraph-dfs-func}
 
-Im Gegensatz zu den vorangegangenen Kapiteln, bei dem die Tiefensuche als
-Prozedur spezifiziert und implementiert wurde, wird nun der Algorithmus als
-Funktion umgesetzt. Das heißt, dass sowohl die iterative als auch die rekursive
-Variante einen Rückgabeparameter besitzen, der einen Pfad vom Startknoten a
-in die Zielknotenmenge z enthält, wenn dieser im Graphen g existiert.
-Andernfalls wird die leere Liste zurückgegeben.
+Im Gegensatz zu den vorangegangenen Kapiteln \ref{sec:digraph-dfs-proc} bis
+\ref{sec:dfs-rek-1}, bei denen die Tiefensuche als Prozedur mit
+Wahrheitswertrückgabe spezifiziert und implementiert wurde, wird nun der
+Algorithmus als Funktion umgesetzt. Das heißt, dass sowohl die iterative als
+auch die rekursive Variante einen Rückgabeparameter besitzen, der einen Pfad
+vom Startknoten a in die Zielknotenmenge z enthält, wenn dieser im Graphen g
+existiert. Andernfalls wird die leere Liste zurückgegeben.
 \par
 Der folgende Absatz zeigt die Signatur der Spezifikation:
 
@@ -36,26 +37,28 @@ a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp deptSearchF(a
 \end{quote}
 {\bf end enrich}
 
-Die Spezifikation erweitert die Spezifikation \emph{union\_bool\_graph}, welche
-in Abschnitt \ref{sec:digraph-path} erläutert wird. Innerhalb von \emph{digraph-dfs-func} wird die
-Funktion \emph{deptSearchF} beschrieben, welche eine Abbildung von \emph{elem
-$\times$ list $\times$ digraph $\rightarrow$ list} ist. Die definierten Axiome
-werden im Folgenden entsprechend der obigen Ordnung erklärt:
+Die Spezifikation erweitert die Spezifikation \texttt{union\_bool\_graph},
+welche in Abschnitt \ref{sec:digraph-path} erläutert wird. Innerhalb von
+\texttt{digraph-dfs-func} wird die Funktion \texttt{deptSearchF} beschrieben,
+welche eine Abbildung von \texttt{elem $\times$ list $\times$ digraph
+$\rightarrow$ list} ist. Die definierten Axiome werden im Folgenden
+entsprechend der obigen Ordnung erklärt:
 
 \begin{itemize}
-  \item Das erste Axiom besagt, dass wenn der Funktion entweder keine
-  Zielknotenmenge oder kein Startelement übergeben wird, diese einen leeren Pfad
-  zurückgibt, sprich die leere Liste.
-  \item Das zweite Axiom stellt den Fall dar, dass es im Graphen eine Kante
-  gibt, deren Startknoten a und deren Endknoten b ist. Wird die Funktion in der
-  Form aufgerufen, dass a der Startknoten und b der Zielknoten ist, so ist der
-  Rückgabepfad die Kante x.
-  \item Axiom drei und vier erfüllen dieselben Voraussetzungen wie zwei, mit dem
-  Unterschied, dass die Aussage von Axiom 3 ist, dass der Start des
-  Rückgabepfades a ist und in Axiom vier das Ende Pfades Knoten b.
-  \item Axiom fünf bildet die Transitivität ab, wobei gesagt wird, dass wenn
-  eine Kante von a nach b und von b nach c existiert, wobei c Zielknoten ist, der
-  Knoten a das erste Element auf dem Rückgabepfad ist.
+  \item Das erste Axiom besagt, dass die Funktion einen leeren Pfad, d.h. eine
+  leere Liste, zurückgibt, wenn ihr entweder eine leere Zielknotenmenge oder
+  kein Startelement übergeben wurde.
+  \item Das zweite Axiom stellt den Fall dar, dass es im Graphen einen Pfad
+  gibt, dessen Startknoten a und dessen Endknoten b ist. Wird die Funktion in
+  der Form aufgerufen, dass a der Startknoten und b der Zielknoten ist, so ist der
+  Rückgabepfad der Pfad x.
+  \item Axiom 3 und 4 erfüllen beide die Voraussetzung, dass es eine Kante von
+  a nach b im Graphen gibt, mit a als Startknoten und b als Zielknoten. Für
+  Axiom 3 gilt dann, dass der Start des Rückgabepfades Knoten a ist und in Axiom
+  4 das Ende Pfades Knoten b ist.
+  \item Axiom fünf bildet die Transitivität ab. Unter der Voraussetzung, dass c
+  ein Zielknoten ist und ein Pfad von a nach b und von b nach c existiert, ist
+  der Knoten a das erste Element auf dem Rückgabepfad.
   \item Analog zu Axiom fünf, ist die Aussage das auf dem transitiven Pfad das
   letzte Element der Zielknoten c ist.
 \end{itemize}
