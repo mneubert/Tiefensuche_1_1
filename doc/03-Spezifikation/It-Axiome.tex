@@ -26,10 +26,10 @@ Die in der Spezifikation definierte Prozedur \texttt{deptSearchP} bildet dabei d
 Dabei bezeichnet \texttt{elem} den Startknoten, \texttt{list} die Menge der Zielknoten und \texttt{digraph} den Graphen.
 Des Weiteren werden in der Spezifikation verschiedene Axiome deklariert:\\
 \begin{itemize}
-\item Das erste Axiom beschreibt den Fall, dass unzulässige Parameter beim Prozeduraufruf übergeben werden. Dies ist der Fall, wenn keine Zielknoten angegeben werden oder a ein leerer Knoten ist. In diesem Fall existiert kein Pfad im Graph und somit soll die Prozedur \texttt{false} zurückgeben.  
+\item Das erste Axiom beschreibt den Fall, dass unzulässige Parameter beim Prozeduraufruf übergeben werden. Diese Situation tritt auf, wenn keine Zielknoten angegeben werden oder a ein leerer Knoten ist. In dieser Konstelation existiert kein Pfad im Graph und somit soll die Prozedur \texttt{false} zurückgeben.  
 \item Das zweite Axiom nimmt Bezug auf die Signatur \texttt{pathp}, welche in der Graphenbibliothek implementiert wurde und überprüft, ob es einen Pfad x im Graphen g gibt. Ist dies der Fall und der Anfangsknoten des Pfades stimmt mit dem Startknoten a über ein und der letzte Knoten des Pfades ist ein Element der Zielknotenmenge, dann liefert die Prozedur \texttt{deptSearchP} \texttt{true} zurück.
 \item Im dritten Axiom wird der Bezug zum Begriff der Kante im Graphen gebildet. Wenn es eine Kante von Knoten a nach Knoten b im Graphen g gibt und b in der Zielknotenmenge liegt, dann muss die Methode \texttt{deptSearchP} diesen Weg finden. Dieses Axiom ist ein Spezialfall des vierten Axioms.
-\item Im vierten Axiom wird der Begriff der Kante um die transitive Eigenschaft erweitert. Unsere Prozedur muss also auch dann einen Pfad finden bzw. \texttt{true} zurückliefern, wenn es von Knoten a über einen anderen Knoten b einen Weg in die Zielknotenmenge gibt. Setzt man in diesem Fall b = c, hat man den Spezialfall, welcher in Axiom 3 beschrieben wurde. 
+\item Im vierten Axiom wird der Begriff der Kante um die transitive Eigenschaft erweitert. Die Prozedur muss also auch dann einen Pfad finden bzw. \texttt{true} zurückliefern, wenn es von Knoten a über einen anderen Knoten b einen Weg in die Zielknotenmenge gibt. Setzt man in diesem Fall b = c, hat man den Spezialfall, welcher in Axiom 3 beschrieben wurde. 
 \end{itemize}
 
 

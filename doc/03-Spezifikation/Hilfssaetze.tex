@@ -2,7 +2,7 @@
 \label{sec:digraph-path}
 
 Bei der Bearbeitung des Projektes und der Beweisführung mussten verschiedene Ansätze aus der Graphenbibliothek zusammengeführt sowie Teilbeweise ausgelagert werden, da sie in mehreren Beweisen notwendig waren.\\
-Zunächst werde die Spezifikation \texttt{union\_bool\_graph} betrachtet, welche die notwendigen Pakete der Graphenbibliothek zusammenfasst. Folgenden die verwendete Spezifikation:
+Zunächst werde die Spezifikation \texttt{union\_bool\_graph} betrachtet, welche die notwendigen Pakete der Graphenbibliothek zusammenfasst. Im folgenden die verwendete Spezifikation:
 
 union\_bool\_graph = digraph-outsorted-neighbours + bool
 
@@ -23,10 +23,10 @@ getM(a, @g +v a) = 1;
 \end{quote}
 {\bf end enrich}
 
-Die Methode \texttt{getM} bekommt sowohl einen Knoten a sowie einen Graphen g übergeben und gibt eine Zahl m zurück. Diese bezeichnet hierbei die Anzahl der von dem Knoten a im Graphen g erreichbaren Knoten, wobei sowohl direkt erreichbare als auch über transitive Kanten erreichbare berücksichtigt werden. Auch hier werden wieder drei Axiome definiert:
+Die Methode \texttt{getM} bekommt einen Knoten a sowie einen Graphen g übergeben und gibt eine Zahl m zurück. Diese bezeichnet hierbei die Anzahl der von dem Knoten a im Graphen g erreichbaren Knoten, wobei sowohl direkt erreichbare als auch über transitive Kanten erreichbare berücksichtigt werden. Auch hier werden wieder drei Axiome definiert:
 
 \begin{itemize}
-	\item Axiom 1 gibt dann, dass in einem leeren Graphen kein Knoten von a erreicht werden kann.
+	\item Axiom 1 gibt an, dass in einem leeren Graphen kein Knoten von a erreicht werden kann.
 	\item In Axiom 2 wird der leere Graph um einen Knoten a erweitert. Die Anzahl der von a erreichbaren Knoten ist in diesem Fall 1.
 	\item Im dritten Axiom wird ein Knoten b, welcher noch nicht im Graphen lag sowie eine Kante vom Knoten a zu Knoten b hinzugefügt. Die Anzahl der erreichbaren Knoten entspricht nun der Anzahl der erreichbaren Knoten ohne den Knoten b plus 1. 
 \end{itemize}
@@ -93,7 +93,7 @@ Proof steps: 1, interactions: 1
 
 \medskip
 
-Auch hier sei wieder auf die verwendeten Beweisschritte hingewiesen, welche in den Tabellen \ref{tab:digraph-path-stat} bis \ref{tab:digraph-path-lemma} aufgeführt sind.
+Auch hier sei wieder auf die verwendeten Beweismethoden hingewiesen, welche in den Tabellen \ref{tab:digraph-path-stat} bis \ref{tab:digraph-path-lemma} aufgeführt sind.
 
 \begin{table}[!ht]
 	\centering
