@@ -1,8 +1,8 @@
-\subsection{Modul \texttt{dfs-it-1}}
+ï»¿\subsection{Modul \texttt{dfs-it-1}}
 \label{sec:dfs-it-1}
 
-Das Modul \texttt{dfs-it-1} implementiert die Spezifikation \texttt{digraph-dfs-proc}, also die Tiefensuche als Prozedur mit der Rückgabe eines Wahrheitswertes. Die genaue Implementierung ist unten aufgezeigt. Allgemein kann gesagt werden, dass zunächst die fehlerhaften Eingaben abgefangen werden, bevor der eigentliche Algorithmus zum Einsatz kommt. Dabei wird in einer Schleife so lange ein neuer Knoten expandiert, bis entweder ein Pfad gefunden wurde oder alle erreichbaren Knoten abgearbeitet wurden. Für letzteren Fall wurde die Hilfsfunktion \texttt{getM} eingeführt, welche im Abschnitt \ref{sec:digraph-path} noch genauer erläutert wird. In der while-Schleife wird wie erwähnt ein Knoten von der open-Liste untersucht und geschaut, ob von ihm erreichbare Knoten noch nicht auf der close-Liste sind. Dazu wird die Funktion \texttt{outsortSuccs} verwendet, welche aus der Graphenbibliothek stammt.\\
-Unterhalb der Deklaration findet man noch einmal die Axiome. Hierbei wird aufgelistet, in wie weit die Axiome mit der Implementierung bewiesen werden konnten und wie die Abhängigkeiten untereinander sind. 
+Das Modul \texttt{dfs-it-1} implementiert die Spezifikation \texttt{digraph-dfs-proc}, also die Tiefensuche als Prozedur mit der Rï¿½ckgabe eines Wahrheitswertes. Die genaue Implementierung ist unten aufgezeigt. Allgemein kann gesagt werden, dass zunï¿½chst die fehlerhaften Eingaben abgefangen werden, bevor der eigentliche Algorithmus zum Einsatz kommt. Dabei wird in einer Schleife so lange ein neuer Knoten expandiert, bis entweder ein Pfad gefunden wurde oder alle erreichbaren Knoten abgearbeitet wurden. Fï¿½r letzteren Fall wurde die Hilfsfunktion \texttt{getM} eingefï¿½hrt, welche im Abschnitt \ref{sec:digraph-path} noch genauer erlï¿½utert wird. In der while-Schleife wird wie erwï¿½hnt ein Knoten von der open-Liste untersucht und geschaut, ob von ihm erreichbare Knoten noch nicht auf der close-Liste sind. Dazu wird die Funktion \texttt{outsortSuccs} verwendet, welche aus der Graphenbibliothek stammt.\\
+Unterhalb der Deklaration findet man noch einmal die Axiome. Hierbei wird aufgelistet, in wie weit die Axiome mit der Implementierung bewiesen werden konnten und wie die Abhï¿½ngigkeiten untereinander sind. 
 
 {\parindent0cm
 
@@ -133,7 +133,7 @@ deptSearchP\#(a, z, g; {\bf var} bbool) \\
 
 \medskip
 
-Wie zu sehen ist, konnten alle Beweisverpflichtungen bewiesen werden. Dabei wurde bei den Axiomen 2 bis 4 auf den Terminationsbeweis zurück gegriffen. In den Tabellen \ref{tab:dfs-it-1-stat} bis \ref{tab:dfs-it-1-lemma} sind noch einmal die bei den Beweisen verwendeten Beweisschritte aufgeführt.
+Wie zu sehen ist, konnten alle Beweisverpflichtungen bewiesen werden. Dabei wurde bei den Axiomen 2 bis 4 auf den Terminationsbeweis zurï¿½ckgegriffen. In den Tabellen \ref{tab:dfs-it-1-stat} bis \ref{tab:dfs-it-1-lemma} sind noch einmal die bei den Beweisen verwendeten Beweisschritte aufgefï¿½hrt.
 
 \begin{table}[!ht]
 	\centering
