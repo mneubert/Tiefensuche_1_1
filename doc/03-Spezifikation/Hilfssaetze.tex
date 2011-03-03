@@ -1,12 +1,12 @@
-﻿\section{"`Hilfss�tze"' - Spezifikation und Module}
+﻿\section{"`Hilfssätze"' - Spezifikation und Module}
 \label{sec:digraph-path}
 
-Bei der Bearbeitung des Projektes und der Beweisf�hrung mussten verschiedene Ans�tze aus der Graphenbibliothek zusammengef�hrt sowie Teilbeweise ausgelagert werden, da sie in mehreren Beweisen notwendig waren.\\
-Zun�chst werde die Spezifikation \texttt{union\_bool\_graph} betrachtet, welche die notwendigen Pakete der Graphenbibliothek zusammenfasst. Im Folgenden die verwendete Spezifikation:
+Bei der Bearbeitung des Projektes und der Beweisführung mussten verschiedene Ansätze aus der Graphenbibliothek zusammengeführt sowie Teilbeweise ausgelagert werden, da sie in mehreren Beweisen notwendig waren.\\
+Zunächst werde die Spezifikation \texttt{union\_bool\_graph} betrachtet, welche die notwendigen Pakete der Graphenbibliothek zusammenfasst. Im Folgenden die verwendete Spezifikation:
 
 union\_bool\_graph = digraph-outsorted-neighbours + bool
 
-Eine weitere Spezifikation ist \texttt{digraph-path}, in welcher die in Kapitel 3.1 erw�hnte Signatur \texttt{getM} definiert wird.
+Eine weitere Spezifikation ist \texttt{digraph-path}, in welcher die in Kapitel 3.1 erwähnte Signatur \texttt{getM} definiert wird.
 
 digraph-path = \\
 {\bf enr}\={\bf ich} union\_bool\_graph {\bf with}\+\\
@@ -23,12 +23,12 @@ getM(a, @g +v a) = 1;
 \end{quote}
 {\bf end enrich}
 
-Die Methode \texttt{getM} bekommt einen Knoten a sowie einen Graphen g �bergeben und gibt eine Zahl m zur�ck. Diese bezeichnet hierbei die Anzahl der von dem Knoten a im Graphen g erreichbaren Knoten, wobei sowohl direkt erreichbare als auch �ber transitive Kanten erreichbare ber�cksichtigt werden. Auch hier werden wieder drei Axiome definiert:
+Die Methode \texttt{getM} bekommt einen Knoten a sowie einen Graphen g übergeben und gibt eine Zahl m zurück. Diese bezeichnet hierbei die Anzahl der von dem Knoten a im Graphen g erreichbaren Knoten, wobei sowohl direkt erreichbare als auch über transitive Kanten erreichbare berücksichtigt werden. Auch hier werden wieder drei Axiome definiert:
 
 \begin{itemize}
 	\item Axiom 1 gibt an, dass in einem leeren Graphen kein Knoten von a erreicht werden kann.
 	\item In Axiom 2 wird der leere Graph um einen Knoten a erweitert. Die Anzahl der von a erreichbaren Knoten ist in diesem Fall 1.
-	\item Im dritten Axiom wird ein Knoten b, welcher noch nicht im Graphen lag sowie eine Kante vom Knoten a zu Knoten b hinzugef�gt. Die Anzahl der erreichbaren Knoten entspricht nun der Anzahl der erreichbaren Knoten ohne den Knoten b plus 1. 
+	\item Im dritten Axiom wird ein Knoten b, welcher noch nicht im Graphen lag sowie eine Kante vom Knoten a zu Knoten b hinzugefügt. Die Anzahl der erreichbaren Knoten entspricht nun der Anzahl der erreichbaren Knoten ohne den Knoten b plus 1. 
 \end{itemize}
 Die Spezifikation wird durch das Modul \texttt{dfs-temp} implementiert. Folgend ist die Implementierung der Funktion \texttt{getM} zu sehen.
 
@@ -45,8 +45,8 @@ getM\#(a, g; {\bf var} n) \\
 {\bf \}}\\
 \}
 
-F�r einen gegebenen Knoten werden in einer Schleife alle anderen Knoten des Graphen betrachtet. Mit der Funktion \texttt{path$\exists$} aus der Graphenbibliothek wird dann �berpr�ft, ob es einen Pfad zwischen den beiden Knoten gibt. Wenn ja, wird die Z�hlvariable erh�ht. \\
-Die Beweise der Axiome gelangen alle, wie sich in folgendem Abschnitt sehen l�sst. 
+Für einen gegebenen Knoten werden in einer Schleife alle anderen Knoten des Graphen betrachtet. Mit der Funktion \texttt{path$\exists$} aus der Graphenbibliothek wird dann überprüft, ob es einen Pfad zwischen den beiden Knoten gibt. Wenn ja, wird die Zählvariable erhöht. \\
+Die Beweise der Axiome gelangen alle, wie sich in folgendem Abschnitt sehen lässt. 
 \medskip
 
 Term-getmjsiz: 
@@ -93,7 +93,7 @@ Proof steps: 1, interactions: 1
 
 \medskip
 
-Auch hier sei wieder auf die verwendeten Beweismethoden hingewiesen, welche in den Tabellen \ref{tab:digraph-path-stat} bis \ref{tab:digraph-path-lemma} aufgef�hrt sind.
+Auch hier sei wieder auf die verwendeten Beweismethoden hingewiesen, welche in den Tabellen \ref{tab:digraph-path-stat} bis \ref{tab:digraph-path-lemma} aufgeführt sind.
 
 \begin{table}[!ht]
 	\centering
