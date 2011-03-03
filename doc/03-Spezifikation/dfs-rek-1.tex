@@ -3,7 +3,7 @@
 
 Das Modul \texttt{dfs-rek-1} beinhaltet die rekursive Implementierung der Tiefensuche und genügt der Spezifikation \texttt{digraph-dfs-proc} (siehe Abs. \ref{sec:digraph-dfs-proc}). 
 \par
-Die Implementierung orientiert sich an der in Abs. \ref{sec:implementierungen} beschriebenen Variante einer rekursiven Tiefensuche. Zur Vereinfachung des Terminationsbeweises wurde jedoch wie bei der iterativen Umsetzung zusätzlich die Hilfsfunktion \texttt{getM(.,.)} verwendet. In \texttt{decl-01} erfolgt daher zunächst der Aufruf dieser Funktion, um die Anzahl der erreichbaren Knoten vom Startknoten zu bestimmen. Danach wird die Tiefensuche gestartet, deren Quellcode \texttt{decl-03} zeigt. Nach der Initialisierung der Rückgabevariablen \texttt{bbool} mit dem Wahrheitswert \texttt{false} werden die Abbruchbedingungen geprüft. Ist weder die open-Liste noch die Zielknotenmenge leer sowie die Anzahl der noch erreichbaren Knoten größer 0, so wird der erste Knoten der open-Liste entnommen. Für diesen wird geprüft, ob er sich in der Zielknotenmenge befindet. In diesem Fall war die Suche erfolgreich und wird beendet. Anderfalls wird der Knoten der close-Liste hinzugefügt und expandiert. Zur Expansion wird die Graphenbibliotheksfunktion \texttt{outsortSuccs} genutzt (vgl. \cite{dr:2008}). Abschließend wird die Anzahl der erreichbaren Knoten dekrementiert und es erfolgt ein rekursiver Aufruf der Funktion, sofern noch Knoten erreichbar sind.
+Die Implementierung orientiert sich an der in Abs. \ref{sec:implementierungen} beschriebenen Variante einer rekursiven Tiefensuche. Zur Vereinfachung des Terminationsbeweises wurde jedoch wie bei der iterativen Umsetzung zusätzlich die Hilfsfunktion \texttt{getM} verwendet. In \texttt{decl-01} erfolgt daher zunächst der Aufruf dieser Funktion, um die Anzahl der erreichbaren Knoten vom Startknoten zu bestimmen. Danach wird die Tiefensuche gestartet, deren Quellcode \texttt{decl-03} zeigt. Nach der Initialisierung der Rückgabevariablen \texttt{bbool} mit dem Wahrheitswert \texttt{false} werden die Abbruchbedingungen geprüft. Ist weder die open-Liste noch die Zielknotenmenge leer sowie die Anzahl der noch erreichbaren Knoten größer 0, so wird der erste Knoten der open-Liste entnommen. Für diesen wird geprüft, ob er sich in der Zielknotenmenge befindet. In diesem Fall war die Suche erfolgreich und wird beendet. Anderfalls wird der Knoten der close-Liste hinzugefügt und expandiert. Zur Expansion wird die Graphenbibliotheksfunktion \texttt{outsortSuccs} genutzt (vgl. \cite{dr:2008}). Abschließend wird die Anzahl der erreichbaren Knoten dekrementiert und es erfolgt ein rekursiver Aufruf der Funktion, sofern noch Knoten erreichbar sind.
 
 {\parindent0cm
 
@@ -54,7 +54,7 @@ bbool := false;\\
 
 \medskip
 
-Nachfolgend werden die Details und Abhängigkeiten der zu diesem Modul gehörigen Beweise gemäß der Spezifikation \texttt{digraph-dfs-proc} aufgelistet.
+Nachfolgend werden die Details und Abhängigkeiten der zu diesem Modul gehörigen Beweisverpflichtungen gemäß der Spezifikation \texttt{digraph-dfs-proc} aufgelistet.
 
 {\LARGE\bf Term-deptsearchpjsiz}
 
