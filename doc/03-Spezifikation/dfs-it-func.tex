@@ -222,6 +222,22 @@ Wie für den rekursiven Fall konnte der Terminationsbeweis nicht vollständig
 abgeschlossen werden. Die restlichen Axiome wurden allerdings bewiesen.
 Die Tabellen \ref{tab:dfs-it-func-stat} bis \ref{tab:dfs-it-func-lemma} zeigen eine Auflistung zu den Beweisschritten.
 
+
+\begin{table}[!ht]
+	\centering
+
+\begin{tabular}{l|r|r}
+theorem	        & total applications & percentage \\ \hline
+Term-deptsearchfjsiz & 5 & 71.4 \% \\
+decl & 2 & 28.5 \% \\
+
+\end{tabular}
+
+\caption{dfs-it-func-1: Lemma applications}
+	\label{tab:dfs-it-func-lemma}
+\end{table}
+
+
 \begin{table}[!ht]
 	\centering
 
@@ -286,16 +302,3 @@ while right & 1 & 1.5 \% \\
 	\label{tab:dfs-it-func-rule}
 \end{table}
 
-\begin{table}[!ht]
-	\centering
-
-\begin{tabular}{l|r|r}
-theorem	        & total applications & percentage \\ \hline
-Term-deptsearchfjsiz & 5 & 71.4 \% \\
-decl & 2 & 28.5 \% \\
-
-\end{tabular}
-
-\caption{dfs-it-func-1: Lemma applications}
-	\label{tab:dfs-it-func-lemma}
-\end{table}

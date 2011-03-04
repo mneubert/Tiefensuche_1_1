@@ -1,9 +1,9 @@
 \subsection{Spezifikation \texttt{digraph-dfs-proc}}
 \label{sec:digraph-dfs-proc}
 
-Ausgehend von den Ãœberlegungen in Kapitel 2 soll zunÃ¤chst eine Tiefensuche als Prozedur umgesetzt werden.
-Dies bedeutet, dass die RÃ¼ckgabe des Programmes ein Wahrheitswert ist. EnthÃ¤lt der Graph g einen Pfad vom Startknoten zur Zielknotenmenge, so
-wird \texttt{true} zurÃ¼ckgeliefert, anderfalls \texttt{false}. Im folgenden Absatz sieht man die Signatur der Spezifikation:
+Ausgehend von den Überlegungen in Kapitel 2 soll zunächst eine Tiefensuche als Prozedur umgesetzt werden.
+Dies bedeutet, dass die Rückgabe des Programmes ein Wahrheitswert ist. Enthält der Graph g einen Pfad vom Startknoten zur Zielknotenmenge, so
+wird \texttt{true} zurückgeliefert, anderfalls \texttt{false}. Im folgenden Absatz sieht man die Signatur der Spezifikation:
 
 digraph-dfs-proc = \\
 {\bf enrich} digraph-basic, union\_bool\_graph {\bf with}\+\\
@@ -21,15 +21,15 @@ $\vdash$ a --$>$ b $\in$\_e g \And b --$>$ c $\in$\_e g \And c $\in$ z \Imp (dep
 
 {\bf end enrich}
 
-Die Spezifikation erweitert hierbei die vorhandenen Spezifikationen \texttt{digraph-basic} sowie \texttt{union\_bool\_graph}, welche HilfssÃ¤tze enthalten und im Abschnitt \ref{sec:digraph-path} erlÃ¤utert werden.
+Die Spezifikation erweitert hierbei die vorhandenen Spezifikationen \texttt{digraph-basic} sowie \texttt{union\_bool\_graph}, welche Hilfssätze enthalten und im Abschnitt \ref{sec:digraph-path} erläutert werden.
 Die in der Spezifikation definierte Prozedur \texttt{deptSearchP} bildet dabei drei Eingabeparameter \texttt{elem} $\times$ \texttt{list} $\times$ \texttt{digraph} auf einen Wahrheitswert ab.
 Dabei bezeichnet \texttt{elem} den Startknoten, \texttt{list} die Menge der Zielknoten und \texttt{digraph} den Graphen.
 Des Weiteren werden in der Spezifikation verschiedene Axiome deklariert:\\
 \begin{itemize}
-\item Das erste Axiom beschreibt den Fall, dass unzulÃ¤ssige Parameter beim Prozeduraufruf Ã¼bergeben werden. Diese Situation tritt auf, wenn keine Zielknoten angegeben werden oder a ein leerer Knoten ist. In dieser Konstellation existiert kein Pfad im Graph und somit soll die Prozedur \texttt{false} zurÃ¼ckgeben.  
-\item Das zweite Axiom nimmt Bezug auf die Signatur \texttt{pathp}, welche in der Graphenbibliothek implementiert wurde und Ã¼berprÃ¼ft, ob es einen Pfad x im Graphen g gibt. Ist dies der Fall und der Anfangsknoten des Pfades stimmt mit dem Startknoten a Ã¼berein und der letzte Knoten des Pfades ist ein Element der Zielknotenmenge, dann liefert die Prozedur \texttt{deptSearchP} \texttt{true} zurÃ¼ck.
+\item Das erste Axiom beschreibt den Fall, dass unzulässige Parameter beim Prozeduraufruf übergeben werden. Diese Situation tritt auf, wenn keine Zielknoten angegeben werden oder a ein leerer Knoten ist. In dieser Konstellation existiert kein Pfad im Graph und somit soll die Prozedur \texttt{false} zurückgeben.  
+\item Das zweite Axiom nimmt Bezug auf die Signatur \texttt{pathp}, welche in der Graphenbibliothek implementiert wurde und überprüft, ob es einen Pfad x im Graphen g gibt. Ist dies der Fall und der Anfangsknoten des Pfades stimmt mit dem Startknoten a überein und der letzte Knoten des Pfades ist ein Element der Zielknotenmenge, dann liefert die Prozedur \texttt{deptSearchP} \texttt{true} zurück.
 \item Im dritten Axiom wird der Bezug zum Begriff der Kante im Graphen gebildet. Wenn es eine Kante von Knoten a nach Knoten b im Graphen g gibt und b in der Zielknotenmenge liegt, dann muss die Methode \texttt{deptSearchP} diesen Weg finden. Dieses Axiom ist ein Spezialfall des vierten Axioms.
-\item Im vierten Axiom wird der Begriff der Kante um die transitive Eigenschaft erweitert. Die Prozedur muss also auch dann einen Pfad finden bzw. \texttt{true} zurÃ¼ckliefern, wenn es von Knoten a Ã¼ber einen anderen Knoten b einen Weg in die Zielknotenmenge gibt. Setzt man in diesem Fall b = c, hat man den Spezialfall, welcher in Axiom 3 beschrieben wurde. 
+\item Im vierten Axiom wird der Begriff der Kante um die transitive Eigenschaft erweitert. Die Prozedur muss also auch dann einen Pfad finden bzw. \texttt{true} zurückliefern, wenn es von Knoten a über einen anderen Knoten b einen Weg in die Zielknotenmenge gibt. Setzt man in diesem Fall b = c, hat man den Spezialfall, welcher in Axiom 3 beschrieben wurde. 
 \end{itemize}
 
 
